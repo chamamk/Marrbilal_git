@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('largeur');
             $table->float('qte');
             $table->float('prix');
+            $table->date('dateachat');
             //unité mesure soit m2 ou ml ou unité
             $table->string('unite');
             $table->date('dateecheance');

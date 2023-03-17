@@ -7,8 +7,7 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Nom Fournisseur</th>
-            <th>Prénom Fournisseur</th>
+            <th>Nom Fournisseur complet</th>
             <th>Téléphone</th>
             <th>Compte Bancaire</th>
             <th>Adresse</th>
@@ -20,8 +19,7 @@
         @foreach ($fournisseurs as $fournisseur)
             <tr>
                 <td>{{ $fournisseur->id }}</td>
-                <td>{{ $fournisseur->nom }}</td>
-                <td>{{ $fournisseur->prenom }}</td>
+                <td>{{ $fournisseur->nom }} {{ $fournisseur->prenom }}</td>
                 <td>{{ $fournisseur->telephone }}</td>
                 <td>{{ $fournisseur->comptebancaire }}</td>
                 <td>{{ $fournisseur->adresse }}</td>

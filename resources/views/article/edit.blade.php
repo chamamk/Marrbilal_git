@@ -9,6 +9,7 @@
         @endphp
         <h1>Ajouter Article</h1>
         <form action="{{ route('article.update', $article->id) }}" method="POST">
+            @method('put')
             @csrf
             <label for="nomcommercial">Nom commercial</label>
             <input type="text" name="nomcommercial" id="nomcommercial" value="{{ $article->nomcommercial }}"
@@ -30,7 +31,8 @@
             <input type="text" name="unite" id="unite" value="{{ $article->unite }}" class="form-control" />
             <label for="prix">Prix</label>
             <input type="number" name="prix" id="prix" value="{{ $article->prix }}" class="form-control" />
-            Active : <input type="checkbox" value="1" name="active" id="active"><br>
+            Active : <input type="checkbox"  name="active" id="active" value="{{ $article->active }}"
+            @php if($article->active==$article->active){echo('checked="checked"');} @endphp><br>
             <button type="submit" class="btn btn-warning">Modifier</button>
         </form>
     </div>

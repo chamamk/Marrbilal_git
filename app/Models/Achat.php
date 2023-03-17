@@ -14,6 +14,7 @@ class Achat extends Model
         'qte',
         'unite',
         'prix',
+        'dateachat',
         'dateecheance',
         'article_id',
         'fournisseur_id',
