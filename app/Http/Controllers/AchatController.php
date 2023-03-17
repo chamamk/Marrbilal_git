@@ -13,7 +13,8 @@ class AchatController extends Controller
      */
     public function index()
     {
-        //
+        $achats=Achat::all();
+        return view('achat.index',compact('achats'));
     }
 
     /**
@@ -21,7 +22,7 @@ class AchatController extends Controller
      */
     public function create()
     {
-        //
+        return view('achat.create');
     }
 
     /**
@@ -29,7 +30,8 @@ class AchatController extends Controller
      */
     public function store(StoreAchatRequest $request)
     {
-        //
+        Achat::create($request->all());
+        return redirect()->route('achat.index');
     }
 
     /**
@@ -37,7 +39,7 @@ class AchatController extends Controller
      */
     public function show(Achat $achat)
     {
-        //
+        return view ('achat.show',compact('article'));
     }
 
     /**
@@ -45,7 +47,7 @@ class AchatController extends Controller
      */
     public function edit(Achat $achat)
     {
-        //
+        return view ('achat.edit',compact('achat'));
     }
 
     /**
@@ -53,7 +55,8 @@ class AchatController extends Controller
      */
     public function update(UpdateAchatRequest $request, Achat $achat)
     {
-        //
+        $achat->update($request->all());
+        return redirect()->route('achat.index');
     }
 
     /**
@@ -61,6 +64,7 @@ class AchatController extends Controller
      */
     public function destroy(Achat $achat)
     {
-        //
+        $achat->delete();
+        return redirect()->route('achat.index');
     }
 }
