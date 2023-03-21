@@ -25,13 +25,22 @@ class ArticleController extends Controller
         return view('article.create');
     }
 
-    /**
+    /*
      * Store a newly created resource in storage.
      */
     public function store(StoreArticleRequest $request)
     {
-        Article::create($request->all());
-        return redirect()->route('article.index');
+            $request->validate([
+                "type_marbre_id" => "required|integer",
+                "nomcommercial" => "required|string",
+                "stockinitial" => "required|integer",
+                "stock" => "required|integer",
+                "unite" => "required|string",
+                "prix" => "required|integer",
+                "active" => "required|string"
+            ]);
+            Article::create($request->all());
+                return redirect()->route('article.index');
     }
 
     /**

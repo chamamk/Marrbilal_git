@@ -18,7 +18,7 @@ return new class extends Migration
             $table->float('stockinitial');
             $table->float('stock');
             $table->float('prix');
-            $table->boolean('active')->default(true);
+            $table->string('active');
             $table->foreignId('type_marbre_id')->constrained();
             $table->timestamps();
         });
