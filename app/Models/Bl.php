@@ -12,14 +12,10 @@ class Bl extends Model
         'datebl',
         'isregle',
         'etat',
-        'client_id'
+        'bon_commande_id'
     ];
-    public function detailbls()
+    public function boncommande()
     {
-        return $this->hasMany(DetailBL::class);
-    }
-    public function client()
-    {
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(BonCommande::class);
     }
 }

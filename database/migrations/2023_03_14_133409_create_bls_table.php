@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('datebl');
             $table->boolean('isregle');
             $table->string('etat');
-            $table->foreignId('client_id')->constrained();
+            $table->foreignId('bon_commande_id')->constrained();
             $table->timestamps();
         });
     }

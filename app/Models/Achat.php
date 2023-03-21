@@ -32,4 +32,12 @@ class Achat extends Model
     {
         return $this->belongsTo(ModePaiement::class);
     }
+    public function Surface(){
+        $surface=$this->longueur*$this->largeur*$this->qte;
+        return ($surface);
+    }
+    public function total(){
+        $total=$this->Surface()*$this->prix;
+        return ($total);
+    }
 }
