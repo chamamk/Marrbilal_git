@@ -15,7 +15,7 @@
               </button>
         </div>
         <div class="Ajouter-Client">
-                <a  href="/Clients/Ajouter" id="search-button" type="button" class="btn btn-success h-75 ms-5">
+                <a  href="{{ route('clients.create') }}" id="search-button" type="button" class="btn btn-success h-75 ms-5">
                         <i class="fa fa-plus"></i>
                 </a>
         </div>
@@ -28,7 +28,6 @@
                 <tr>
                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">#</th>
                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Nom complet de Client</th>
-                    <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Nom Commercial de Article</th>
                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">CIN</th>
                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Téléphone</th>
                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Compte Bancaire</th>
@@ -38,47 +37,46 @@
                 </tr>
             </thead>
             <tbody>
+              @foreach ($clients as $item)
               <tr>
                 <td class="text-center">
-                      <h6 class="mb-0 text-lg">1</h6>
+                      <h6 class="mb-0 text-lg">{{ $item->id }}</h6>
                 </td>
                 <td class="align-middle text-center">
-                  <p class="text-xs font-weight-bold mb-0">Chaimae Maktoub</p>
+                  <p class="text-xs font-weight-bold mb-0">{{ $item->nomcomplete }}</p>
                 </td>
                 <td class="align-middle text-center">
-                  <span class="text-xs font-weight-bold">Granite</span>
-                </td>
-                <td class="align-middle text-center">
-                    
-                    <span class="text-xs font-weight-bold">CD654858586</span>
+                    <span class="text-xs font-weight-bold">{{ $item->cin }}</span>
                   </td>
                   <td class="align-middle text-center">
                     
-                    <span class="text-xs font-weight-bold">0666995588</span>
+                    <span class="text-xs font-weight-bold">{{ $item->telephone }}</span>
                   </td>
                   <td class="align-middle text-center">
                     
-                    <span class="text-xs font-weight-bold">4758 9685 5236 2547</span>
+                    <span class="text-xs font-weight-bold">{{ $item->comptebancaire }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-xs font-weight-bold">hay saada </span>
+                    <span class="text-xs font-weight-bold">{{ $item->adresse }}</span>
                   </td>
 
                   <td class="align-middle text-center">
-                    <span class="text-xs font-weight-bold">fes</span>
+                    <span class="text-xs font-weight-bold">{{ $item->ville }}</span>
                   </td>
                 <td class="align-middle text-center cursor-pointe">
-                  <a href="/Clients/Modifier" class="text-secondary font-weight-bold text-xs px-2 px-2" role="button">
+                  <a href="{{ route('clients.edit', $item->id )}}" class="text-secondary font-weight-bold text-xs px-2 px-2" role="button">
                     Modifier
                   </a>
-                  <a class="text-secondary font-weight-bold text-xs px-2" role="button" >
-                    Supprimer
-                  </a>
-                  <a class="text-secondary font-weight-bold text-xs px-2" role="button">
-                    Details
-                  </a>
+                  <form action="{{ route('clients.destroy', $item->id )}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="badge badge-sm bg-gradient-danger border-0"
+                        onclick="return confirm('Voulez vous vraiment supprimer un client en cours ?')" >supprimer<button>
+                </form>
+                  
                 </td>
               </tr>
+              @endforeach
             
             </tbody>
           </table>

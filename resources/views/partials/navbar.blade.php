@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li class="nav-link">
-                    <a href="/Clients">
+                    <a href="{{ route('clients.index') }}">
                         <i class='bx bx-user icon' ></i>
                         <span class="text nav-text">Client</span>
                     </a>

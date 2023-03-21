@@ -14,7 +14,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients=Client::all();
-        return view('client.index',compact('clients'));
+        return view('clients.index',compact('clients'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return view('client.create');
+        return view('clients.create');
     }
 
     /**
@@ -30,8 +30,16 @@ class ClientController extends Controller
      */
     public function store(StoreClientRequest $request)
     {
+        $request->validate([
+            "nomcomplete" => "required|string",
+            "cin" => "required|string",
+            "comptebancaire" => "required|integer",
+            "telephone" => "required|string",
+            "adresse" => "required|string",
+            "ville" => "required|string"
+        ]);
         Client::create($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -39,7 +47,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        return view ('client.show',compact('client'));
+        return view ('clients.show',compact('client'));
     }
 
     /**
@@ -47,7 +55,7 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        return view ('client.edit',compact('client'));
+        return view ('clients.edit',compact('client'));
     }
 
     /**
@@ -55,8 +63,16 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, Client $client)
     {
+        $request->validate([
+            "nomcomplete" => "required|string",
+            "cin" => "required|string",
+            "comptebancaire" => "required|integer",
+            "telephone" => "required|string",
+            "adresse" => "required|string",
+            "ville" => "required|string"
+        ]);
         $client->update($request->all());
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -65,6 +81,6 @@ class ClientController extends Controller
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('clients.index');
     }
 }
