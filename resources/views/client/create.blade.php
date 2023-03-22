@@ -1,18 +1,17 @@
 @extends('index')
 @section('title')
-   Modifier Clients  
+   Ajouter Clients
 @endsection
 @section('main')
-<form action="{{ route('clients.update' , $client->id) }}" method="POST">
+<form action="{{ route('client.store') }}" method="POST">
   @csrf
-  @method('PUT')
 <div class="row d-flex justify-content-center">
     <div class="col-md-8">
       <div class="card">
         <div class="card-header pb-0">
           <div class="d-flex align-items-center">
-            <p class="mb-2"><h6>Modifier Client</h6></p>
-            <a  href="{{ route('clients.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
+            <p class="mb-2"><h6>Ajouter Client</h6></p>
+            <a  href="{{ route('client.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
           </div>
         </div>
         <div class="card-body">
@@ -20,19 +19,19 @@
           <div class="row">
             <div class="col-md-12">
               <div class="form-group">
-                <label for="example-text-input" class="form-control-label text-center">Nom Complete</label>
-                <input class="form-control" type="text" name="nomcomplete" value="{{ $client->nomcomplete }}" >
+                <label for="example-text-input" class="form-control-label">Nom Complete</label>
+                <input class="form-control" type="text" name="nomcomplete" value="{{ old('nomcomplete') }}" >
                 @error('nomcomplete')
-                    <div class="text-danger">
-                        {{ $message }}
-                    </div>
+                <div class="text-danger">
+                  {{ $message }}
+              </div>
                 @enderror
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">CIN</label>
-                <input class="form-control" type="text" name="cin" value="{{ $client->cin }}" >
+                <input class="form-control" type="text" name="cin" value="{{ old('cin') }}" >
                 @error('cin')
                 <div class="text-danger">
                   {{ $message }}
@@ -43,7 +42,7 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Compte Bancaire</label>
-                <input class="form-control" type="text" name="comptebancaire" value="{{ $client->comptebancaire }}" >
+                <input class="form-control" type="text" name="comptebancaire" value="{{ old('comptebancaire') }}" >
                 @error('comptebancaire')
                 <div class="text-danger">
                   {{ $message }}
@@ -57,7 +56,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Téléphone</label>
-                <input class="form-control" type="text" name="telephone" value="{{ $client->telephone }}" >
+                <input class="form-control" type="text" name="telephone" value="{{ old('telephone') }}" >
                 @error('telephone')
                 <div class="text-danger">
                   {{ $message }}
@@ -68,7 +67,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Adresse</label>
-                <input class="form-control" type="text" name="adresse" value="{{ $client->adresse }}" >
+                <input class="form-control" type="text" name="adresse" value="{{ old('adresse') }}" >
                 @error('adresse')
                 <div class="text-danger">
                   {{ $message }}
@@ -79,7 +78,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <label for="example-text-input" class="form-control-label">Ville</label>
-                <input class="form-control" type="text" name="ville" value="{{ $client->ville }}" >
+                <input class="form-control" type="text" name="ville" value="{{ old('ville') }}" >
                 @error('ville')
                 <div class="text-danger">
                   {{ $message }}
@@ -90,7 +89,7 @@
           </div>
           <hr class="horizontal dark">
           <form>
-            <button type="submit" class="btn btn-primary btn-md ms-auto">Modifier</button>
+            <button type="submit" class="btn btn-primary btn-md ms-auto">Ajouter</button>
           </form>
         </div>
       </div>

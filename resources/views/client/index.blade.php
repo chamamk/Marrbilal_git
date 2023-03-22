@@ -9,13 +9,13 @@
       <div class="card-header pb-0 d-flex justify-content-between">
         <h6>Table des Clients</h6>
         <div class="input-group">
-            <input id="search-input" type="search" class="form-control h-75 " placeholder="Search anything...">  
+            <input id="search-input" type="search" class="form-control h-75 " placeholder="Search anything...">
               <button id="search-button" type="button" class="btn btn-primary h-75">
             <i class="fa fa-search"></i>
               </button>
         </div>
         <div class="Ajouter-Client">
-                <a  href="{{ route('clients.create') }}" id="search-button" type="button" class="btn btn-success h-75 ms-5">
+                <a  href="{{ route('client.create') }}" id="search-button" type="button" class="btn btn-success h-75 ms-5">
                         <i class="fa fa-plus"></i>
                 </a>
         </div>
@@ -37,47 +37,47 @@
                 </tr>
             </thead>
             <tbody>
-              @foreach ($clients as $item)
+              @foreach ($clients as $client)
               <tr>
                 <td class="text-center">
-                      <h6 class="mb-0 text-lg">{{ $item->id }}</h6>
+                      <h6 class="mb-0 text-lg">{{ $client->id }}</h6>
                 </td>
                 <td class="align-middle text-center">
-                  <p class="text-xs font-weight-bold mb-0">{{ $item->nomcomplete }}</p>
+                  <p class="text-xs font-weight-bold mb-0">{{ $client->nomcomplete }}</p>
                 </td>
                 <td class="align-middle text-center">
-                    <span class="text-xs font-weight-bold">{{ $item->cin }}</span>
+                    <span class="text-xs font-weight-bold">{{ $client->cin }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    
-                    <span class="text-xs font-weight-bold">{{ $item->telephone }}</span>
+
+                    <span class="text-xs font-weight-bold">{{ $client->telephone }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    
-                    <span class="text-xs font-weight-bold">{{ $item->comptebancaire }}</span>
+
+                    <span class="text-xs font-weight-bold">{{ $client->comptebancaire }}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-xs font-weight-bold">{{ $item->adresse }}</span>
+                    <span class="text-xs font-weight-bold">{{ $client->adresse }}</span>
                   </td>
 
                   <td class="align-middle text-center">
-                    <span class="text-xs font-weight-bold">{{ $item->ville }}</span>
+                    <span class="text-xs font-weight-bold">{{ $client->ville }}</span>
                   </td>
                 <td class="align-middle text-center cursor-pointe">
-                  <a href="{{ route('clients.edit', $item->id )}}" class="text-secondary font-weight-bold text-xs px-2 px-2" role="button">
+                  <a href="{{ route('client.edit', $client->id )}}" class="text-secondary font-weight-bold text-xs px-2 px-2" role="button">
                     Modifier
                   </a>
-                  <form action="{{ route('clients.destroy', $item->id )}}" method="POST">
+                  <form action="{{ route('client.destroy', $client->id )}}" method="POST">
                     @method('DELETE')
                     @csrf
                     <button type="submit" class="badge badge-sm bg-gradient-danger border-0"
                         onclick="return confirm('Voulez vous vraiment supprimer un client en cours ?')" >supprimer<button>
                 </form>
-                  
+
                 </td>
               </tr>
               @endforeach
-            
+
             </tbody>
           </table>
             </div>

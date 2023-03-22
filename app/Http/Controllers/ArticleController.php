@@ -64,6 +64,15 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
+        $request->validate([
+            "type_marbre_id" => "required|integer",
+            "nomcommercial" => "required|string",
+            "stockinitial" => "required|integer",
+            "stock" => "required|integer",
+            "unite" => "required|string",
+            "prix" => "required|integer",
+            "active" => "required|string"
+        ]);
         $article->update($request->all());
         return redirect()->route('article.index');
     }

@@ -1,21 +1,22 @@
 @extends('index')
 @section('title')
-    Article
+    Fournisseur
 @endsection
 @section('main')
     @include('partials.cards')
+
     <div class="col-12">
         <div class="card mb-4 w-95">
             <div class="card-header pb-0 d-flex justify-content-between">
-                <h6>Table des Articles</h6>
+                <h6>Table des Fournisseur</h6>
                 <div class="input-group">
                     <input id="search-input" type="search" class="form-control h-75 " placeholder="Search anything...">
                     <button id="search-button" type="button" class="btn btn-primary h-75">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
-                <div class="Ajouter-article">
-                    <a href="{{ route('article.create') }}" id="search-button" type="button"
+                <div class="Ajouter-Client">
+                    <a href="{{ route('fournisseur.create') }}" id="search-button" type="button"
                         class="btn btn-success h-75 ms-5">
                         <i class="fa fa-plus"></i>
                     </a>
@@ -32,81 +33,55 @@
                                         #</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Type de marbre</th>
+                                        Nom complet de Fournisseur</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Nom Commercial</th>
+                                        Téléphone</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Stock initial</th>
+                                        Compte Bancaire</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Stock</th>
+                                        Adresse</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Unité</th>
-                                    <th
-                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Prix</th>
-                                    <th
-                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Active</th>
+                                        Ville</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($articles as $article)
+                                @foreach ($fournisseurs as $fournisseur)
                                     <tr>
                                         <td class="text-center">
-                                            <h6 class="mb-0 text-lg">{{ $article->id }}</h6>
+                                            <h6 class="mb-0 text-lg">{{ $fournisseur->id }}</h6>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $article->type_marbre_id }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $fournisseur->nomcomplet }}</p>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">{{ $article->nomcommercial }}</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-
-                                            <span class="text-xs font-weight-bold">{{ $article->stockinitial }}</span>
+                                            <span class="text-xs font-weight-bold">{{ $fournisseur->telephone }}</span>
                                         </td>
                                         <td class="align-middle text-center">
 
-                                            <span class="text-xs font-weight-bold">{{ $article->stock }}</span>
+                                            <span class="text-xs font-weight-bold">{{ $fournisseur->comptebancaire }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-
-                                            <span class="text-xs font-weight-bold">{{ $article->unite }}</span>
+                                            <span class="text-xs font-weight-bold">{{ $fournisseur->adresse }} </span>
                                         </td>
+
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">{{ $article->prix }} DH</span>
+                                            <span class="text-xs font-weight-bold">{{ $fournisseur->ville }}</span>
                                         </td>
-                                        @if ($article->active == '0')
-                                            <td class="align-middle text-center">
-                                                <span class="badge badge-sm bg-gradient-danger">Non</span>
-                                            </td>
-                                        @else
-                                            <td class="align-middle text-center">
-                                                <span class="badge badge-sm bg-gradient-success">Oui</span>
-                                            </td>
-                                        @endif
-
-
-
                                         <td class="align-middle text-center cursor-pointe">
-                                            <form action="{{ url('article/' . $article->id) }}" method="POST">
+                                            <form action="{{ url('fournisseur/' . $fournisseur->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="{{ url('article/' . $article->id . '/edit') }}"
-                                                    class="bi bi-pencil-square btn btn-warning btn-sm"></a>
-                                                <button type="submit" class="bi bi-trash btn btn-danger btn-sm"
-                                                    onclick="return confirm('Voulez vous vraiment supprimer un article en cours ?')" />
-                                                {{-- <a class="text-secondary font-weight-bold text-xs px-2" role="button">
-                                                    Details
-                                                </a> --}}
-                                            </form>
+                                                <a href="{{ url('fournisseur/' . $fournisseur->id . '/edit') }}"
+                                                    class="bi bi-pencil-square btn btn-warning"></a>
+                                                <button type="submit" class="bi bi-trash btn btn-danger"
+                                                    onclick="return confirm('Voulez vous vraiment supprimer un fournisseur en cours ?')" />
                                         </td>
                                     </tr>
                                 @endforeach

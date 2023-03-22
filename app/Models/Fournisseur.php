@@ -9,8 +9,7 @@ class Fournisseur extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'nom',
-        'prenom',
+        'nomcomplet',
         'telephone',
         'adresse',
         'comptebancaire',

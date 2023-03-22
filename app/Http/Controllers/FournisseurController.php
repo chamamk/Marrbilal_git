@@ -24,6 +24,13 @@ class FournisseurController extends Controller
 
     public function store(StoreFournisseurRequest $request)
     {
+        $request->validate([
+            "nomcomplet" => "required|string",
+            "comptebancaire" => "required|string",
+            "telephone" => "required|string",
+            "adresse" => "required|string",
+            "ville" => "required|string"
+        ]);
         Fournisseur::create($request->all());
         return redirect()->route('fournisseur.index');
     }
@@ -42,6 +49,13 @@ class FournisseurController extends Controller
 
     public function update(UpdateFournisseurRequest $request, Fournisseur $fournisseur)
     {
+        $request->validate([
+            "nomcomplet" => "required|string",
+            "comptebancaire" => "required|string",
+            "telephone" => "required|string",
+            "adresse" => "required|string",
+            "ville" => "required|string"
+        ]);
         $fournisseur->update($request->all());
         return redirect()->route('fournisseur.index');
 

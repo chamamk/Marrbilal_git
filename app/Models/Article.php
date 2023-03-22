@@ -21,8 +21,8 @@ class Article extends Model
     {
         return $this->belongsTo(TypeMarbre::class);
     }
-    public function detailbls()
+    public function bonCommandes()
     {
-        return $this->hasMany(DetailBL::class);
+        return $this->hasMany(BonCommande::class);
     }
 }
