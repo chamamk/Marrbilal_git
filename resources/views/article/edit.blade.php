@@ -85,8 +85,16 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="unite" class="form-control-label">unité</label>
-                                    <input class="form-control" type="text" name="unite" id="unite"
-                                        value="{{ $article->unite }}">
+                                    <select class="form-control" type="text" name="unite" id="unite">
+                                        <option value="{{ $article->unite }}"
+                                            @php if($article->unite=="m²"){echo('selected="selected"');} @endphp>
+                                            m²
+                                        </option>
+                                        <option value="{{ $article->unite }}"
+                                            @php if($article->unite=="ml"){echo('selected="selected"');} @endphp>
+                                                ml
+                                        </option>
+                                    </select>
                                     @error('unite')
                                         <div class="text-danger">
                                             {{ $message }}

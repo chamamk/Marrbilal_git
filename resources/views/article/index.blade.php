@@ -92,20 +92,18 @@
                                                 <span class="badge badge-sm bg-gradient-success">Oui</span>
                                             </td>
                                         @endif
-
                                         <td class="align-middle text-center cursor-pointe">
-                                            <form action="{{ url('article/' . $article->id) }}" method="POST">
+                                            <form action="{{ route('article.destroy', $article->id) }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="{{ url('article/' . $article->id . '/edit') }}"
-                                                    class="btn btn-warning btn-sm"><i class="fa fa-pen"></i></a>
+                                                <a href="{{ route('article.edit', $article->id) }}"
+                                                    class="btn btn-warning btn-sm" role="button">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
                                                 <button type="submit" class="bi bi-trash btn btn-danger btn-sm"
-                                                    onclick="return confirm('Voulez vous vraiment supprimer un article en cours ?')">
+                                                    onclick="return confirm('Voulez vous vraiment supprimer un fournisseur en cours ?')">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                                {{-- <a class="text-secondary font-weight-bold text-xs px-2" role="button">
-                                                    Details
-                                                </a> --}}
                                             </form>
                                         </td>
                                     </tr>

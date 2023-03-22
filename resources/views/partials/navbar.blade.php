@@ -34,16 +34,16 @@
                         <span class="text nav-text">Client</span>
                     </a>
                 </li>
-                
+
                 <li class="nav-link">
-                    <a href="/Achat">
+                    <a href="{{ route('achat.index') }}">
                         <i class='bx bx-shopping-bag icon'></i>
                         <span class="text nav-text">Achat</span>
                     </a>
                 </li>
 
                 <li class="nav-link">
-                    <a href="">
+                    <a href="{{ route('fournisseur.index') }}">
                         <i class='bx bx-user-circle icon' ></i>
                         <span class="text nav-text">Fournisseur</span>
                     </a>
@@ -70,7 +70,7 @@
                     <i class='bx bx-log-out icon' ></i>
                     <span class="text nav-text">Logout</span>
                 </a>
-            </li>    
+            </li>
         </div>
     </div>
 </nav>
