@@ -14,7 +14,7 @@ class ModePaiementController extends Controller
     public function index()
     {
         $modesPaiement=ModePaiement::all();
-        return view('modePaiement.index',compact('modesPaiement'));
+        return view('modepayment.index',compact('modesPaiement'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ModePaiementController extends Controller
      */
     public function create()
     {
-        return view('modePaiement.create');
+        return view('modepayment.create');
     }
 
     /**
@@ -31,7 +31,7 @@ class ModePaiementController extends Controller
     public function store(StoreModePaiementRequest $request)
     {
         ModePaiement::create($request->all());
-        return redirect()->route('modePaiement.index');
+        return redirect()->route('modepayment.index');
     }
 
     /**
@@ -39,32 +39,32 @@ class ModePaiementController extends Controller
      */
     public function show(ModePaiement $modePaiement)
     {
-        return view ('modePaiement.show',compact('modePaiement'));
+        return view ('modepayment.show',compact('modePaiement'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ModePaiement $modePaiement)
+    public function edit(ModePaiement $modepayment)
     {
-        return view ('modePaiement.edit',compact('modePaiement'));
+        return view ('modepayment.edit',compact('modepayment'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateModePaiementRequest $request, ModePaiement $modePaiement)
+    public function update(UpdateModePaiementRequest $request, ModePaiement $modepayment)
     {
-        $modePaiement->update($request->all());
-        return redirect()->route('modePaiement.index');
+        $modepayment->update($request->all());
+        return redirect()->route('modepayment.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ModePaiement $modePaiement)
+    public function destroy(ModePaiement $modepayment)
     {
-        $modePaiement->delete();
-        return redirect()->route('modePaiement.index');
+        $modepayment->delete();
+        return redirect()->route('modepayment.index');
     }
 }

@@ -10,10 +10,12 @@ use App\Http\Controllers\AchatController;
 Route::get('/', function () {
     return view('accueil');
 });
-
+Route::get('/Profile', function () {
+    return view('profile.index');
+});
 Route::resource('fournisseur',FournisseurController::class);
-// Route::resource('typemarbre',TypeMarbreController::class);
-// Route::resource('modePaiement',ModePaiementController::class);
+Route::resource('typemarbre',TypeMarbreController::class);
+Route::resource('modepayment',ModePaiementController::class);
 Route::resource('article',ArticleController::class);
 Route::resource('client',ClientController::class);
 // Route::resource('achat',AchatController::class);

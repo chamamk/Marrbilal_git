@@ -43,7 +43,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="">
+                    <a href="{{ route('fournisseur.index') }}">
                         <i class='bx bx-user-circle icon' ></i>
                         <span class="text nav-text">Fournisseur</span>
                     </a>
@@ -51,13 +51,13 @@
 
                 <li class="nav-link">
                     <a href="#">
-                        <i class='bx bx-folder icon' ></i>
+                        <i class='bx bx-folder icon'></i>
                         <span class="text nav-text">BL</span>
                     </a>
                 </li>
 
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="/Profile">
                         <i class='bx bxs-wrench icon' ></i>
                         <span class="text nav-text">Paramètres </span>
                     </a>
