@@ -64,14 +64,16 @@
                     <span class="text-xs font-weight-bold">{{ $client->ville }}</span>
                   </td>
                 <td class="align-middle text-center cursor-pointe">
-                  <a href="{{ route('client.edit', $client->id )}}" class="text-secondary font-weight-bold text-xs px-2 px-2" role="button">
-                    Modifier
-                  </a>
                   <form action="{{ route('client.destroy', $client->id )}}" method="POST">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="badge badge-sm bg-gradient-danger border-0"
-                        onclick="return confirm('Voulez vous vraiment supprimer un client en cours ?')" >supprimer<button>
+                    <a href="{{ route('client.edit', $client->id )}}" class="btn btn-warning btn-sm" role="button">
+                      <i class="fa fa-pen"></i>
+                    </a>
+                    <button type="submit" class="bi bi-trash btn btn-danger btn-sm"
+                    onclick="return confirm('Voulez vous vraiment supprimer un Clients en cours ?')">
+                    <i class="fa fa-trash"></i>
+                </button>
                 </form>
 
                 </td>

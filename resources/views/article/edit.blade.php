@@ -111,8 +111,12 @@
                                     <label for="active" class="form-control-label">Active</label>
                                     <select class="form-control" type="text" name="active" id="active">
                                         <option value="{{ $article->active }}"
-                                            @php if($article->active==$article->active){echo('selected="selected"');} @endphp>
-                                            {{ $article->active }}
+                                            @php if($article->active=="1"){echo('selected="selected"');} @endphp>
+                                            Oui
+                                        </option>
+                                        <option value="{{ $article->active }}"
+                                            @php if($article->active=="0"){echo('selected="selected"');} @endphp>
+                                                Non
                                         </option>
                                     </select>
                                     @error('active')
