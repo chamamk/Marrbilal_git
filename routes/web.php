@@ -18,7 +18,7 @@ Route::resource('typemarbre',TypeMarbreController::class);
 Route::resource('modepayment',ModePaiementController::class);
 Route::resource('article',ArticleController::class);
 Route::resource('client',ClientController::class);
-// Route::resource('achat',AchatController::class);
+Route::resource('achat',AchatController::class);
 
 
 

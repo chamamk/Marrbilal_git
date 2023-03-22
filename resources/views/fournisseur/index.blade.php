@@ -74,14 +74,23 @@
                                             <span class="text-xs font-weight-bold">{{ $fournisseur->ville }}</span>
                                         </td>
                                         <td class="align-middle text-center cursor-pointe">
-                                            <form action="{{ url('fournisseur/' . $fournisseur->id) }}" method="POST">
+
+                                            <form action="{{ route('fournisseur.destroy', $fournisseur->id) }}"
+                                                method="POST">
                                                 @method('DELETE')
                                                 @csrf
-                                                <a href="{{ url('fournisseur/' . $fournisseur->id . '/edit') }}"
-                                                    class="bi bi-pencil-square btn btn-warning"></a>
-                                                <button type="submit" class="bi bi-trash btn btn-danger"
-                                                    onclick="return confirm('Voulez vous vraiment supprimer un fournisseur en cours ?')" />
+                                                <a href="{{ route('fournisseur.edit', $fournisseur->id) }}"
+                                                    class="btn btn-warning btn-sm" role="button">
+                                                    <i class="fa fa-pencil"></i>
+                                                </a>
+                                                <button type="submit" class="bi bi-trash btn btn-danger btn-sm"
+                                                    onclick="return confirm('Voulez vous vraiment supprimer un fournisseur en cours ?')">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
                                         </td>
+
+
                                     </tr>
                                 @endforeach
                             </tbody>

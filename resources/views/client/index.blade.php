@@ -68,7 +68,7 @@
                     @method('DELETE')
                     @csrf
                     <a href="{{ route('client.edit', $client->id )}}" class="btn btn-warning btn-sm" role="button">
-                      <i class="fa fa-pen"></i>
+                      <i class="fa fa-pencil"></i>
                     </a>
                     <button type="submit" class="bi bi-trash btn btn-danger btn-sm"
                     onclick="return confirm('Voulez vous vraiment supprimer un Clients en cours ?')">
