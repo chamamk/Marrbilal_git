@@ -13,7 +13,8 @@ class BlController extends Controller
      */
     public function index()
     {
-        //
+        $bls=Bl::all();
+        return view('bl.index',compact('bls'));
     }
 
     /**
@@ -21,7 +22,7 @@ class BlController extends Controller
      */
     public function create()
     {
-        //
+        return view('bl.create');
     }
 
     /**
@@ -29,7 +30,19 @@ class BlController extends Controller
      */
     public function store(StoreBlRequest $request)
     {
-        //
+        $request->validate([
+            "datebl" => "required|date",
+            "client_id"=> "required|integer",
+            "bon_commande_id"=> "required|integer",
+            "article_id"=> "required|integer",
+            "longueur" => "required",
+            "largeur" => "required",
+            "qte" => "required|integer",
+            "etat" => "required|string",
+            "isregle" => "required|string"
+        ]);
+        Bl::create($request->all());
+        return redirect()->route('bonCommande.index');
     }
 
     /**
@@ -37,7 +50,7 @@ class BlController extends Controller
      */
     public function show(Bl $bl)
     {
-        //
+        return view ('bl.show',compact('bl'));
     }
 
     /**
@@ -45,7 +58,7 @@ class BlController extends Controller
      */
     public function edit(Bl $bl)
     {
-        //
+        return view ('bl.edit',compact('bl'));
     }
 
     /**
@@ -53,7 +66,19 @@ class BlController extends Controller
      */
     public function update(UpdateBlRequest $request, Bl $bl)
     {
-        //
+        $request->validate([
+            "datebl" => "required|date",
+            "client_id"=> "required|integer",
+            "bon_commande_id"=> "required|integer",
+            "article_id"=> "required|integer",
+            "longueur" => "required",
+            "largeur" => "required",
+            "qte" => "required|integer",
+            "etat" => "required|string",
+            "isregle" => "required|string"
+        ]);
+        $bl->update($request->all());
+        return redirect()->route('bl.index');
     }
 
     /**
@@ -61,6 +86,7 @@ class BlController extends Controller
      */
     public function destroy(Bl $bl)
     {
-        //
+        $bl->delete();
+        return redirect()->route('bl.index');
     }
 }

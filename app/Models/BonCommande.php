@@ -34,4 +34,8 @@ class BonCommande extends Model
     {
         return $this->hasMany(Bl::class);
     }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
 }

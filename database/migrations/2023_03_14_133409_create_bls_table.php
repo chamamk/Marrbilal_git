@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('etat');
             $table->foreignId('bon_commande_id')->constrained();
             $table->foreignId('article_id')->constrained();
+            $table->foreignId('client_id')->constrained();
             $table->timestamps();
         });
     }

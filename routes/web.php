@@ -8,6 +8,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\BonCommandeController;
+use App\Http\Controllers\BlController;
 Route::get('/', function () {
     return view('accueil');
 });
@@ -21,6 +22,7 @@ Route::resource('article',ArticleController::class);
 Route::resource('client',ClientController::class);
 Route::resource('achat',AchatController::class);
 Route::resource('bonCommande',BonCommandeController::class);
+Route::resource('bl',BlController::class);
 
 
 

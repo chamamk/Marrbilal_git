@@ -33,11 +33,11 @@ class AchatController extends Controller
         $request->validate([
             "dateachat" => "required|date",
             "article_id"=> "required|integer",
-            "longueur" => "required|integer",
-            "largeur" => "required|integer",
+            "longueur" => "required",
+            "largeur" => "required",
             "qte" => "required|integer",
             "unite" => "required|string",
-            "prix" => "required|integer",
+            "prix" => "required",
             "fournisseur_id" => "required|integer",
             "mode_paiement_id" => "required|integer",
             "dateecheance" => "required|date"
@@ -70,11 +70,11 @@ class AchatController extends Controller
         $request->validate([
             "dateachat" => "required|date",
             "article_id"=> "required|integer",
-            "longueur" => "required|integer",
-            "largeur" => "required|integer",
+            "longueur" => "required",
+            "largeur" => "required",
             "qte" => "required|integer",
             "unite" => "required|string",
-            "prix" => "required|integer",
+            "prix" => "required",
             "fournisseur_id" => "required|integer",
             "mode_paiement_id" => "required|integer",
             "dateecheance" => "required|date"

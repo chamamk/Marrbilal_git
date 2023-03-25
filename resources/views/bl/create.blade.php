@@ -1,19 +1,19 @@
 @php
     use App\Models\Article;
     use App\Models\Client;
-    use App\Models\ModePaiement;
+    use App\Models\BonCommande;
 @endphp
 @extends('index')
 @section('title')
-    Ajouter Bon de commande
+    Ajouter Bon de livraison
 @endsection
 @section('main')
     @php
         $articles = Article::all();
         $clients = Client::all();
-        $modesPaiement = ModePaiement::all();
+        $bonsCommande = BonCommande::all();
     @endphp
-    <form action="{{ route('bonCommande.store') }}" method="POST">
+    <form action="{{ route('bl.store') }}" method="POST">
         @csrf
         <div class="row d-flex justify-content-center">
             <div class="col-md-8">
@@ -21,19 +21,19 @@
                     <div class="card-header pb-0">
                         <div class="d-flex align-items-center">
                             <p class="mb-2">
-                            <h6>Ajouter Bon de commande</h6>
+                            <h6>Ajouter Bon de livraison</h6>
                             </p>
-                            <a href="{{ route('bonCommande.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
+                            <a href="{{ route('bl.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="text-uppercase text-sm">Bon de commande</p>
+                        <p class="text-uppercase text-sm">Bon de livraison</p>
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="datebc" class="form-control-label">Date de bon de commande</label>
-                                    <input class="form-control" type="date" name="datebc" id="datebc">
-                                    @error('datebc')
+                                    <label for="datebl" class="form-control-label">Date de bon de livraison</label>
+                                    <input class="form-control" type="date" name="datebl" id="datebl">
+                                    @error('datebl')
                                         <div class="text-danger">
                                             {{ $message }}
                                         </div>
@@ -76,6 +76,23 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    <label for="bon_commande_id" class="form-control-label">Bon de commande</label>
+                                    <select class="form-control" type="text" name="bon_commande_id" id="bon_commande_id">
+                                        @foreach ($bonsCommande as $bonCommande)
+                                            <option class="text-center" value="{{ $bonCommande->id }}">
+                                                {{ $bonCommande->id}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('bon_commande_id')
+                                        <div class="text-danger">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
                                     <label for="longueur" class="form-control-label">Longueur</label>
                                     <input class="form-control" type="number" name="longueur" id="longueur">
                                     @error('longueur')
@@ -90,17 +107,6 @@
                                     <label for="largeur" class="form-control-label">Largeur</label>
                                     <input class="form-control" type="number" name="largeur" id="largeur">
                                     @error('largeur')
-                                        <div class="text-danger">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="pourcentageChute" class="form-control-label">Pourcentage de chute</label>
-                                    <input class="form-control" type="number" name="pourcentageChute" id="pourcentageChute">
-                                    @error('pourcentageChute')
                                         <div class="text-danger">
                                             {{ $message }}
                                         </div>
@@ -123,19 +129,19 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="unite" class="form-control-label">Unité</label>
-                                    <select class="form-control" type="text" name="unite" id="unite">
+                                    <label for="etat" class="form-control-label">Etat</label>
+                                    <select class="form-control" type="text" name="etat" id="etat">
                                         <option class="text-center">
-                                            -----unité-----
+                                            -----Etat-----
                                         </option>
-                                        <option class="text-center" value="m²">
-                                            m²
+                                        <option class="text-center" value="livré">
+                                            Livré
                                         </option>
-                                        <option class="text-center" value="ml">
-                                            ml
+                                        <option class="text-center" value="annule">
+                                            Annulé
                                         </option>
                                     </select>
-                                    @error('unite')
+                                    @error('etat')
                                         <div class="text-danger">
                                             {{ $message }}
                                         </div>
@@ -144,56 +150,25 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="prix" class="form-control-label">Prix</label>
-                                    <input class="form-control" type="number" name="prix" id="prix">
-                                    @error('prix')
-                                        <div class="text-danger">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="avance" class="form-control-label">Avance</label>
-                                    <input class="form-control" type="number" name="avance" id="avance">
-                                    @error('avance')
-                                        <div class="text-danger">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="mode_paiement_id" class="form-control-label">Mode de paiement</label>
-                                    <select class="form-control" type="text" name="mode_paiement_id"
-                                        id="mode_paiement_id">
-                                        @foreach ($modesPaiement as $modePaiement)
-                                            <option class="text-center" value="{{ $modePaiement->id }}">
-                                                {{ $modePaiement->modepaiement }}
-                                            </option>
-                                        @endforeach
+                                    <label for="isregle" class="form-control-label">Is regle</label>
+                                    <select class="form-control" type="text" name="isregle" id="isregle">
+                                        <option class="text-center">
+                                            -----IsRegle-----
+                                        </option>
+                                        <option class="text-center" value="1">
+                                            Oui
+                                        </option>
+                                        <option class="text-center" value="0">
+                                            Non
+                                        </option>
                                     </select>
-                                    @error('mode_paiement_id')
+                                    @error('isregle')
                                         <div class="text-danger">
                                             {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="dateecheance" class="form-control-label">Date d'écheance</label>
-                                    <input class="form-control" type="date" name="dateecheance" id="dateecheance">
-                                    @error('dateecheance')
-                                        <div class="text-danger">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
                         <hr class="horizontal dark">
                         <form>
                             <button class="btn btn-primary btn-md ms-auto">Ajouter</button>

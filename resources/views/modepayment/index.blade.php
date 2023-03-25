@@ -3,7 +3,7 @@
 <div class="col-10">
     <div class="card mb-4">
         <div class="card-header pb-0 d-flex justify-content-between">
-            <h6>Table des Fournisseur</h6>
+            <h6>Table des Modes paiement</h6>
             <div class="Ajouter-Client">
                 <a href="{{ route('modepayment.create') }}" id="search-button" type="button"
                     class="btn btn-success h-75 ms-5">
@@ -22,7 +22,7 @@
                                     #</th>
                                 <th
                                     class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                    Mode payment</th>
+                                    Mode de paiement</th>
                                     <th
                                     class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                     Action</th>
@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                             @foreach ($modesPaiement as $mode)
-                                
+
                             <tr>
                                 <td class="text-center">
                                     <h6 class="mb-0 text-lg">{{ $mode->id}}</h6>
@@ -44,7 +44,7 @@
                                         @csrf
                                         <a href="{{ route("modepayment.edit" , $mode->id ) }}"
                                             class="btn btn-warning">
-                                            <i class="fa fa-pen"></i></a>
+                                            <i class="fa fa-pencil"></i></a>
 
                                         <button type="submit" class="btn btn-danger"
                                             onclick="return confirm('Voulez vous vraiment supprimer un fournisseur en cours ?')">
@@ -53,7 +53,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                        
+
                         </tbody>
                     </table>
                 </div>

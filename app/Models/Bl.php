@@ -16,6 +16,7 @@ class Bl extends Model
         'isregle',
         'etat',
         'article_id',
+        'client_id',
         'bon_commande_id'
     ];
     public function boncommande()
@@ -25,5 +26,9 @@ class Bl extends Model
     public function article()
     {
         return $this->belongsTo(Article::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 }

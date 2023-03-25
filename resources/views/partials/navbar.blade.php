@@ -55,6 +55,12 @@
                         <span class="text nav-text">Bon de commande</span>
                     </a>
                 </li>
+                <li class="nav-link">
+                    <a href="{{ route('bl.index') }}">
+                        <i class='bx bx-folder icon'></i>
+                        <span class="text nav-text">Bl</span>
+                    </a>
+                </li>
 
                 <li class="nav-link">
                     <a href="/Profile">
