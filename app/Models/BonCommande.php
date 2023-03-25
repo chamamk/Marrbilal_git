@@ -15,6 +15,8 @@ class BonCommande extends Model
         'qte',
         'prix',
         'avance',
+        'unite',
+        'pourcentageChute',
         'dateecheance',
         'mode_paiement_id',
         'article_id',

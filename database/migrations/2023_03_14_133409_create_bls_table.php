@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('bls', function (Blueprint $table) {
             $table->id();
             $table->date('datebl');
+            $table->float('longueur');
+            $table->float('largeur');
+            $table->float('qte');
             $table->boolean('isregle');
             $table->string('etat');
             $table->foreignId('bon_commande_id')->constrained();
+            $table->foreignId('article_id')->constrained();
             $table->timestamps();
         });
     }

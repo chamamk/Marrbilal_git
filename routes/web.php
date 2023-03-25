@@ -7,6 +7,7 @@ use App\Http\Controllers\ModePaiementController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AchatController;
+use App\Http\Controllers\BonCommandeController;
 Route::get('/', function () {
     return view('accueil');
 });
@@ -19,6 +20,7 @@ Route::resource('modepayment',ModePaiementController::class);
 Route::resource('article',ArticleController::class);
 Route::resource('client',ClientController::class);
 Route::resource('achat',AchatController::class);
+Route::resource('bonCommande',BonCommandeController::class);
 
 
 

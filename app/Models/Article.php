@@ -25,4 +25,12 @@ class Article extends Model
     {
         return $this->hasMany(BonCommande::class);
     }
+    public function bls()
+    {
+        return $this->hasMany(Bl::class);
+    }
+    public function achats()
+    {
+        return $this->hasMany(Achat::class);
+    }
 }

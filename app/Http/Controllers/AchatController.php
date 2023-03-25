@@ -51,7 +51,7 @@ class AchatController extends Controller
      */
     public function show(Achat $achat)
     {
-        return view ('achat.show',compact('article'));
+        return view ('achat.show',compact('achat'));
     }
 
     /**

@@ -13,7 +13,8 @@ class BonCommandeController extends Controller
      */
     public function index()
     {
-        //
+        $bonsCommande=BonCommande::all();
+        return view('bonCommande.index',compact('bonsCommande'));
     }
 
     /**
@@ -21,7 +22,7 @@ class BonCommandeController extends Controller
      */
     public function create()
     {
-        //
+        return view('bonCommande.create');
     }
 
     /**
@@ -29,7 +30,22 @@ class BonCommandeController extends Controller
      */
     public function store(StoreBonCommandeRequest $request)
     {
-        //
+        $request->validate([
+            "datebc" => "required|date",
+            "client_id"=> "required|integer",
+            "article_id"=> "required|integer",
+            "longueur" => "required|integer",
+            "largeur" => "required|integer",
+            "pourcentageChute" => "required|integer",
+            "qte" => "required|integer",
+            "unite" => "required|string",
+            "prix" => "required|integer",
+            "avance" => "required|integer",
+            "mode_paiement_id" => "required|integer",
+            "dateecheance" => "required|date"
+        ]);
+        BonCommande::create($request->all());
+        return redirect()->route('bonCommande.index');
     }
 
     /**
@@ -37,7 +53,7 @@ class BonCommandeController extends Controller
      */
     public function show(BonCommande $bonCommande)
     {
-        //
+        return view ('bonCommande.show',compact('bonCommande'));
     }
 
     /**
@@ -45,7 +61,7 @@ class BonCommandeController extends Controller
      */
     public function edit(BonCommande $bonCommande)
     {
-        //
+        return view ('bonCommande.edit',compact('bonCommande'));
     }
 
     /**
@@ -53,7 +69,22 @@ class BonCommandeController extends Controller
      */
     public function update(UpdateBonCommandeRequest $request, BonCommande $bonCommande)
     {
-        //
+        $request->validate([
+            "datebc" => "required|date",
+            "client_id"=> "required|integer",
+            "article_id"=> "required|integer",
+            "longueur" => "required|integer",
+            "largeur" => "required|integer",
+            "pourcentageChute" => "required|integer",
+            "qte" => "required|integer",
+            "unite" => "required|string",
+            "prix" => "required|integer",
+            "avance" => "required|integer",
+            "mode_paiement_id" => "required|integer",
+            "dateecheance" => "required|date"
+        ]);
+        $bonCommande->update($request->all());
+        return redirect()->route('bonCommande.index');
     }
 
     /**
@@ -61,6 +92,7 @@ class BonCommandeController extends Controller
      */
     public function destroy(BonCommande $bonCommande)
     {
-        //
+        $bonCommande->delete();
+        return redirect()->route('bonCommande.index');
     }
 }

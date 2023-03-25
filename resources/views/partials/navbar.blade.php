@@ -50,9 +50,9 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="#">
+                    <a href="{{ route('bonCommande.index') }}">
                         <i class='bx bx-folder icon'></i>
-                        <span class="text nav-text">BL</span>
+                        <span class="text nav-text">Bon de commande</span>
                     </a>
                 </li>
 

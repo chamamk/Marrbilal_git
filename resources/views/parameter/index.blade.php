@@ -1,6 +1,6 @@
 @extends('index')
 @section('title')
-    Parameter
+    Paramétres
 @endsection
 @section('main')
 <section class="py-5">
