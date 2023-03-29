@@ -5,7 +5,7 @@
 @endphp
 @extends('index')
 @section('title')
-    Modifier Achat
+    Modifier Bon de commande
 @endsection
 @section('main')
     @php

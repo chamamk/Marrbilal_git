@@ -20,4 +20,8 @@ class Client extends Model
     {
         return $this->hasMany(Bl::class);
     }
+    public function bonCommandes()
+    {
+        return $this->hasMany(BonCommande::class);
+    }
 }

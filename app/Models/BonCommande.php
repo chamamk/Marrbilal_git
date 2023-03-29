@@ -24,11 +24,11 @@ class BonCommande extends Model
     ];
     public function mode_paiement()
     {
-        return $this->belongTo(ModePaiement::class);
+        return $this->belongsTo(ModePaiement::class);
     }
     public function article()
     {
-        return $this->belongTo(Article::class);
+        return $this->belongsTo(Article::class);
     }
     public function bls()
     {
@@ -37,5 +37,13 @@ class BonCommande extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+    public function Surface(){
+        $surface=$this->longueur*$this->largeur*$this->qte*$this->pourcentageChute;
+        return ($surface);
+    }
+    public function total(){
+        $total=$this->Surface()*$this->prix;
+        return ($total);
     }
 }

@@ -48,9 +48,13 @@
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Quantité</th>
+
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Pourcentage du chute</th>
+                                    <th
+                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
+                                        Surface</th>
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Unité</th>
@@ -58,6 +62,9 @@
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Prix</th>
+                                    <th
+                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
+                                        Total</th>
 
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
@@ -106,10 +113,17 @@
                                             <span class="text-xs font-weight-bold">{{ $bonCommande->pourcentageChute }}</span>
                                         </td>
                                         <td class="align-middle text-center">
+
+                                            <span class="text-xs font-weight-bold">{{ $bonCommande->Surface() }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">{{ $bonCommande->unite }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">{{ $bonCommande->prix }}</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-xs font-weight-bold">{{ $bonCommande->total() }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span

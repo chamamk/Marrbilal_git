@@ -42,7 +42,7 @@ class BlController extends Controller
             "isregle" => "required|string"
         ]);
         Bl::create($request->all());
-        return redirect()->route('bonCommande.index');
+        return redirect()->route('bl.index');
     }
 
     /**
