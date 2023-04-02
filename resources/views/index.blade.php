@@ -19,6 +19,7 @@
     <title>
         @yield('title')
     </title> 
+    @yield('reactjs')
 </head>
 <body>
     @include('partials.navbar')
@@ -31,15 +32,17 @@
         </div>
     </section>
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('scripting/script.js') }}"></script>
     <script src="{{ asset('assets/js/core/popper.min.js')}}"></script>
     <script src="{{ asset('assets/js/core/bootstrap.min.js')}}"></script>
     <script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script>
-    <script src="{{ asset('js/static.js')}}"></script>
+    <script src="{{ asset('scripting/static.js')}}"></script>
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.4')}}"></script>
-    <script src="{{asset('js/calendar.js')}}"></script>
+    <script src="{{asset('scripting/calendar.js')}}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    @yield('caisseScript')
 </body>
 </html>

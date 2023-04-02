@@ -20,6 +20,11 @@ class ModePaiementController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    public function getPayment()
+    {
+        $data['modePayyment']=ModePaiement::all();     
+            return response()->json($data);
+    }
     public function create()
     {
         return view('modepayment.create');

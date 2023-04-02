@@ -16,6 +16,11 @@ class ClientController extends Controller
         $clients=Client::all();
         return view('client.index',compact('clients'));
     }
+    public function getClient()
+    {
+        $data['clients']=Client::all();
+            return response()->json($data);
+    }
 
     /**
      * Show the form for creating a new resource.

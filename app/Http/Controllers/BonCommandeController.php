@@ -16,6 +16,9 @@ class BonCommandeController extends Controller
         $bonsCommande=BonCommande::all();
         return view('bonCommande.index',compact('bonsCommande'));
     }
+    public function caisse(){
+        return view('bonCommande.caisse');
+    }
 
     /**
      * Show the form for creating a new resource.

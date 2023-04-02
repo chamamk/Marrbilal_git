@@ -4,11 +4,16 @@
 @endsection
 @section('main')
 @include('partials.cards')
-<div class="row mt-0">
+<div class="row">
     <div class="col-lg-7 mb-lg-0 mb-4">
       <div class="card z-index-9 h-95">
-        <div class="card-header pb-3 pt-4 bg-transparent">
+        <div class="card-header bg-transparent">
           <h6 class="text-capitalize">Achets par moins</h6>
+          <div class="float-end">
+            <a href="{{ route('caisse') }}" class="btn btn-primary btn-sm my-0 py-1 px-2">
+              Caisse
+            </a>
+          </div>
         </div>
         <div class="card-body p-3 h-100">
           <div class="chart">

@@ -23,9 +23,7 @@ Route::resource('client',ClientController::class);
 Route::resource('achat',AchatController::class);
 Route::resource('bonCommande',BonCommandeController::class);
 Route::resource('bl',BlController::class);
-
-
-
+Route::get('/Caisse', [BonCommandeController::class , 'caisse'])->name('caisse');
 
 
 

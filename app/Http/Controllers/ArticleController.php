@@ -16,7 +16,11 @@ class ArticleController extends Controller
         $articles=Article::all();
         return view('article.index',compact('articles'));
     }
-
+    public function getArticle()
+    {
+        $data['articles'] = Article::all();
+            return response()->json($data);
+    }
     /**
      * Show the form for creating a new resource.
      */
