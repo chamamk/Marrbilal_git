@@ -10,6 +10,7 @@ function MyApp() {
     const [modePaiement , setModePaimaent] = useState()
     const [payment , setPayment] = useState([])
     const [AllProduct , setAllProduct] = useState([])
+    const [Datec , setDateC] = useState()
     const getclient = () =>{
         axios.get("http://127.0.0.1:8000/api/getclient")
       .then(item => {
@@ -37,13 +38,38 @@ function MyApp() {
       function AddArticle(e){
         e.preventDefault()
         const FindItem = article.find(x => x.id === Number(articleId))
-        console.log(FindItem)
+        // console.log(FindItem)
         if(FindItem){
             FindItem.qte = 1
-            FindItem.datec = "salam"
+            FindItem.datec = Datec
+            FindItem.longueur = "longuer"
+            FindItem.largeur = "largeur"
+            FindItem.avance = "avance"
+            FindItem.dateecheance = "dateecheance"
+            FindItem.mode_paiement_id  = modePaiement
+            FindItem.article_id = articleId
+            FindItem.client_id =  clientId
+            const data = [...AllProduct, FindItem]
+            setAllProduct(data)
+            console.log(AllProduct)
+        }
+      }
+      const increment = (item) => {
+        item.qte += 1
+        setAllProduct([...AllProduct])
+      }
+      const decrement = (item) => {
+        item.qte -= 1
+        if (item.qte === 0) {
+          item.qte = 1
+          setAllProduct([...AllProduct])
+        } else {
+    
+          setAllProduct([...AllProduct])
         }
       }
     return (
+        <>
         <div className="col-12">
         <div className="card mb-4 w-95">
             <div className="card-header pb-0 d-flex justify-content-between">
@@ -89,15 +115,22 @@ function MyApp() {
                         </div>
                     </div>
                 </div>
-                <div className="col mt-4">
+                <div className="col-md-3 ms-3">
                     <div className="form-group">
+                    <label  className="form-control-label">Date de Bon de Commande</label>
+                    <input className="form-control w-50" type="date" onChange={e=>setDateC(e.target.value)}/>
+                    </div>
+                </div>
+                <div className="col-md-3 mt-3">
+                    <div className="form-group">
+                    <label  className="form-control-label"></label>
                         <button type="button" className="btn btn-success fa fa-plus ms-5 py-2 px-3" onClick={AddArticle}></button>
                     </div>
                 </div>
             </div>
             <div className="card-body px-0 pt-0 pb-2">
                 <div className="table-responsive p-0">
-                    <div className="table-wrapper-scroll-y my-custom-scrollbar">
+                    <div className="table-wrapper-scroll-y my-custom-scrollbar" style={{height:"400px",overflow:"scroll"}}>
                     <table className="table align-items-center mb-0">
                             <thead>
                                 <tr>
@@ -123,9 +156,6 @@ function MyApp() {
                                         className="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Quantité</th>
 
-                                    <th
-                                        className="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
-                                        Pourcentage du chute</th>
                                     <th
                                         className="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Surface</th>
@@ -155,15 +185,71 @@ function MyApp() {
                                 </tr>
                             </thead>
                             <tbody id="tbody">
-                            
-                                
+                            {
+                                AllProduct?.map((item,index)=>(
+                                      <tr key={index+1}>
+                                        <td className="text-center">
+                                            <h6 className="mb-0 text-lg">{ index+1}</h6>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <p className="text-xs font-weight-bold mb-0">{item.datec}</p>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <p className="text-xs font-weight-bold mb-0">{ item.client_id}</p>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span
+                                                className="text-xs font-weight-bold">{ item.nomcommercial }</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+
+                                            <span className="text-xs font-weight-bold">{ item.longueur }</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+
+                                            <span className="text-xs font-weight-bold">{ item.largeur }</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+
+                                            <span className="text-xs font-weight-bold d-flex justify-content-between"><i style={{ cursor: "pointer" }} className="fa fa-angle-down" onClick={() => { decrement(item) }}></i><h6>{item.qte}</h6><i style={{ cursor: "pointer" }} className="fa fa-angle-up" onClick={() => { increment(item) }}></i></span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span className="text-xs font-weight-bold"></span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span className="text-xs font-weight-bold">{ item.unite }</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span className="text-xs font-weight-bold">{ item.prix }</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span className="text-xs font-weight-bold"></span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span
+                                                className="text-xs font-weight-bold">{ item.avance}</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span
+                                                className="text-xs font-weight-bold">{ item.mode_paiement_id }</span>
+                                        </td>
+                                        <td className="align-middle text-center">
+                                            <span className="text-xs font-weight-bold">{ item.dateecheance }</span>
+                                            </td>
+                                        <td className="align-middle text-center cursor-pointe">
+                                            <button className='btn btn-danger'>Delete</button>
+                                        </td>
+                                    </tr>
+                                ))
+                            } 
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>                   
+    </>
     );
 }
 export default MyApp;
