@@ -8,13 +8,15 @@ use App\Http\Requests\UpdateClientRequest;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $clients=Client::all();
-        return view('client.index',compact('clients'));
+        if (request('search1')) {
+            $clients = Client::where('nomcomplete', 'like', '%' . request('search1') . '%')->get();
+            } else {
+                $clients=Client::all();
+            } return
+            view('client.index',compact('clients'));
     }
     public function getClient()
     {

@@ -9,15 +9,21 @@
             <div class="card-header pb-0 d-flex justify-content-between">
                 <h6>Table des Bons de livraison</h6>
                 <div class="input-group">
-                    <input id="search-input" type="search" class="form-control h-75 " placeholder="Search anything...">
-                    <button id="search-button" type="button" class="btn btn-primary h-75">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-                <div class="Ajouter-Bl">
-                    <a href="{{ route('bl.create') }}" id="search-button" type="button" class="btn btn-success h-75 ms-5">
-                        <i class="fa fa-plus"></i>
-                    </a>
+                    <div class="col-lg-11">
+                        <form class="d-flex" name="form1">
+                            <input id="search-input" type="search" name="search1" id="search1" onchange="form1.submit()"
+                                class="form-control h-75 " placeholder="Search anything...">
+                            <button id="search-button" type="submit" class="btn btn-primary h-75">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="Ajouter-Bl">
+                        <a href="{{ route('bl.create') }}" id="search-button" type="button"
+                            class="btn btn-success h-75 ms-5">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="card-body px-0 pt-0 pb-2">

@@ -8,11 +8,18 @@ use App\Http\Requests\UpdateFournisseurRequest;
 
 class FournisseurController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        $fournisseurs=Fournisseur::all();
-        return view('fournisseur.index',compact('fournisseurs'));
+        if (request('search1')) {
+            $fournisseurs = Fournisseur::where('nomcomplet', 'like', '%' . request('search1') . '%')->get();
+            } else {
+                $fournisseurs=Fournisseur::all();
+            } return
+             view('fournisseur.index',compact('fournisseurs'));
     }
 
 

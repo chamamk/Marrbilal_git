@@ -8,26 +8,19 @@ use App\Http\Requests\UpdateAchatRequest;
 
 class AchatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $achats=Achat::all();
-        return view('achat.index',compact('achats'));
+        if (request('search2')) {
+            $achats = Achat::where('fournisseur_id', '=', 1 . request('search2'))->get();
+            } else {
+                $achats=Achat::all();
+            } return
+            view('achat.index',compact('achats'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('achat.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreAchatRequest $request)
     {
         $request->validate([

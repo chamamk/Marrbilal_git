@@ -9,12 +9,19 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\BonCommandeController;
 use App\Http\Controllers\BlController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+
 Route::get('/', function () {
     return view('accueil');
 });
-Route::get('/Profile', function () {
-    return view('profile.index');
-});
+Route::get('/Profile',[RegisterController::class,'create']);
+Route::post('/register',[RegisterController::class,'store'])->name('register');
+
+Route::get('/login',[LoginController::class,'index']);
+Route::post('/accueil',[LoginController::class,'check'])->name('accueil');
+
+
 Route::resource('fournisseur',FournisseurController::class);
 Route::resource('typemarbre',TypeMarbreController::class);
 Route::resource('modepayment',ModePaiementController::class);
@@ -26,72 +33,4 @@ Route::resource('bl',BlController::class);
 Route::get('/Caisse', [BonCommandeController::class , 'caisse'])->name('caisse');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Route::get('/', function () {
-//     return view('partials.navbar');
-// });
-// Route::get('/',function(){
-//     return view('pages.accueil');
-// });
-// //------------------Article--------------------------
-// Route::get('/Article',function(){
-//     return view('pages.article.article');
-// });
-// Route::get('/Article/Ajouter',function(){
-//     return view('pages.article.ajouterarticle');
-// });
-// Route::get('/Article/Modifier',function(){
-//     return view('pages.article.editarticle');
-// });
-// //--------------------Client------------------
-// Route::get('/Clients',function(){
-//     return view('pages.clients.clients');
-// });
-// Route::get('/Clients/Ajouter',function(){
-//     return view('pages.clients.ajouterclients');
-// });
-// Route::get('/Clients/Modifier',function(){
-//     return view('pages.clients.editclient');
-// });
-// //------------------Achat-----------------------------
-// Route::get('/Achat',function(){
-//     return view('pages.achat.achat');
-// });
-// Route::get('/Achat/Ajouter',function(){
-//     return view('pages.achat.ajouterachat');
-// });
-// Route::get('/Achat/Modifier',function(){
-//     return view('pages.achat.editachat');
-// });
-// //------------------Fournisseur------------
-// Route::get('/Fournisseur',function(){
-//     return view('pages.Fournisseur.Fournisseur');
-// });
-// Route::get('/Fournisseur/Ajouter',function(){
-//     return view('pages.fournisseur.ajouterfournisseur');
-// });
-// Route::get('/Fournisseur/Modifier',function(){
-//     return view('pages.fournisseur.editfournisseur');
-// });
 

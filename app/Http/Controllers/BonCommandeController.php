@@ -13,8 +13,12 @@ class BonCommandeController extends Controller
      */
     public function index()
     {
-        $bonsCommande=BonCommande::all();
-        return view('bonCommande.index',compact('bonsCommande'));
+        if (request('search3')) {
+            $bonsCommande = BonCommande::where('client_id', '=', 2 . request('search3'))->get();
+            } else {
+                $bonsCommande=BonCommande::all();
+            } return
+             view('bonCommande.index',compact('bonsCommande'));
     }
     public function caisse(){
         return view('bonCommande.caisse');
