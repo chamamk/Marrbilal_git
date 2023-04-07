@@ -23,7 +23,7 @@
       </div>
     </div>
       <div class="col-lg-5 mt-1">
-              <div class="calendar"></div>
-          </div>
+          <div class="calendar"></div>
+        </div>
   </div>
 @endsection
