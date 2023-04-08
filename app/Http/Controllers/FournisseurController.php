@@ -21,7 +21,11 @@ class FournisseurController extends Controller
             } return
              view('fournisseur.index',compact('fournisseurs'));
     }
-
+    public function propriview()
+    {
+        $fournisseurs = Fournisseur::all();
+            return view ('fournisseur.printFournisseur')->with('fournisseurs',$fournisseurs);
+    }
 
     public function create()
     {

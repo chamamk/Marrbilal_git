@@ -9,20 +9,20 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Nom complete</label>
-                            <input type="text" name="name" id="name" class="form-control" value="">
+                            <input type="text" name="name" id="name" class="form-control" value="{{old('name')}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Email</label>
-                            <input type="email" name="email" id="email" class="form-control" value="">
+                            <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}">
                         </div>
                     </div>
 
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" name="password" id="password"class="form-control" value="">
+                            <input type="password" name="password" id="password"class="form-control" value="{{old('password')}}">
                         </div>
                     </div>
                 </div>

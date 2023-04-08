@@ -22,6 +22,11 @@ class ClientController extends Controller
             } return
             view('client.index',compact('clients'));
     }
+    public function propriview()
+    {
+        $clients = Client::all();
+            return view ('client.printClient')->with('clients',$clients);
+    }
     public function getClient()
     {
         $data['clients']=Client::all();

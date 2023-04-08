@@ -23,7 +23,7 @@
                             <p class="mb-2">
                             <h6>Ajouter Bon de commande</h6>
                             </p>
-                            <a href="{{ route('bonCommande.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
+                            <a href="{{ route('bonCommande.index') }}" class="btn btn-warning btn-md ms-auto">Retour</a>
                         </div>
                     </div>
                     <div class="card-body">

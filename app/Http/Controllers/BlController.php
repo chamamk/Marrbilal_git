@@ -21,9 +21,11 @@ class BlController extends Controller
         return view('bl.index',compact('bls'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function propriview()
+    {
+        $bls = Bl::all();
+            return view ('bl.printBl')->with('bls',$bls);
+    }
     public function create()
     {
         return view('bl.create');

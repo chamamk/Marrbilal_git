@@ -10,7 +10,6 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\AchatController;
 use App\Http\Controllers\BonCommandeController;
 use App\Http\Controllers\BlController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 
 /*
@@ -27,9 +26,7 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('accueil');
 })->middleware('auth');
-// Route::get('/Profile',[RegisterController::class,'create']);
-// Route::post('/register',[RegisterController::class,'store'])->name('register');
-// Route::post('/accueil',[LoginController::class,'check'])->name('accueil');
+
 Route::resource('fournisseur',FournisseurController::class);
 Route::resource('typemarbre',TypeMarbreController::class);
 Route::resource('modepayment',ModePaiementController::class);
@@ -41,10 +38,10 @@ Route::resource('bonCommande',BonCommandeController::class);
 Route::resource('bl',BlController::class);
 Route::get('/Caisse', [BonCommandeController::class , 'caisse'])->name('caisse');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 require __DIR__.'/auth.php';

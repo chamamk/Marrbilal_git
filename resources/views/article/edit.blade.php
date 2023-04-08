@@ -20,7 +20,7 @@
                             <p class="mb-2">
                             <h6>Modifier Article</h6>
                             </p>
-                            <a href="{{ route('article.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
+                            <a href="{{ route('article.index') }}" class="btn btn-warning btn-md ms-auto">Retour</a>
                         </div>
                     </div>
                     <div class="card-body">

@@ -24,21 +24,18 @@ class BonCommandeController extends Controller
             } return
              view('bonCommande.index',compact('bonsCommande'));
     }
+    public function propriview()
+    {
+        $bonsCommande = BonCommande::all();
+            return view ('bonCommande.printBon')->with('bonsCommande',$bonsCommande);
+    }
     public function caisse(){
         return view('bonCommande.caisse');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('bonCommande.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreBonCommandeRequest $request)
     {
         $request->validate([

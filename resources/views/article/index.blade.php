@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <a href="{{url('/propriview')}}" class="btn btn-primary">Impression des Articles</a>
+        <a href="{{url('/propriview')}}" class="btn btn-primary">Imprission des Articles</a>
             <script type="text/javascript">
                 $(document).ready(function(){
                     $('.btnprn').printPage();

@@ -63,7 +63,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="/Profile">
+                    <a href="{{ route('register') }}">
                         <i class='bx bxs-wrench icon' ></i>
                         <span class="text nav-text">Paramètres </span>
                     </a>

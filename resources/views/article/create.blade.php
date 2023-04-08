@@ -30,7 +30,7 @@
                             <p class="mb-2">
                             <h6>Ajouter Article</h6>
                             </p>
-                            <a href="{{ route('article.index') }}" class="btn btn-warning btn-md ms-auto">Roteur</a>
+                            <a href="{{ route('article.index') }}" class="btn btn-warning btn-md ms-auto">Retour</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -59,7 +59,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="nomcommercial" class="form-control-label">Nom commercial</label>
-                                    <input class="form-control" type="text" name="nomcommercial" id="nomcommercial">
+                                    <input class="form-control" type="text" name="nomcommercial" id="nomcommercial" value="{{old('nomcommercial')}}">
                                     @error('nomcommercial')
                                         <div class="text-danger">
                                             {{ $message }}
@@ -70,7 +70,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="stockinitial" class="form-control-label">Stock Initial</label>
-                                    <input class="form-control" type="number" name="stockinitial" id="stockinitial">
+                                    <input class="form-control" type="text" name="stockinitial" id="stockinitial" value="{{old('stockinitial')}}">
                                     @error('stockinitial')
                                         <div class="text-danger">
                                             {{ $message }}
@@ -81,7 +81,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="stock" class="form-control-label">stock</label>
-                                    <input class="form-control" type="number" name="stock" id="stock">
+                                    <input class="form-control" type="text" name="stock" id="stock" value="{{old('stock')}}">
                                     @error('stock')
                                         <div class="text-danger">
                                             {{ $message }}
@@ -94,8 +94,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="unité" class="form-control-label">unité</label>
-                                    <select class="form-control" type="text" name="unite" id="unité">
+                                    <label for="unite" class="form-control-label">unité</label>
+                                    <select class="form-control" type="text" name="unite" id="unite" value="{{old('unite')}}">
                                         <option class="text-center">
                                             -----unité-----
                                         </option>
@@ -116,7 +116,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="prix" class="form-control-label">Prix</label>
-                                    <input class="form-control" type="text" name="prix" id="prix">
+                                    <input class="form-control" type="text" name="prix" id="prix" value="{{old('prix')}}">
                                     @error('prix')
                                         <div class="text-danger">
                                             {{ $message }}
@@ -126,8 +126,8 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="Active" class="form-control-label">Active</label>
-                                    <select class="form-control" type="text" name="active" id="Active">
+                                    <label for="active" class="form-control-label">Active</label>
+                                    <select class="form-control" type="text" name="active" id="active" value="{{old('active')}}">
                                         <option class="text-center">
                                             ----------Choisi----------
                                         </option>

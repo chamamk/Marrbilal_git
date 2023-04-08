@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                       <label>Type Marber</label>
-                      <input type="text" class="form-control" name="typemarbre">
+                      <input type="text" class="form-control" name="typemarbre" value="{{old('typemarbre')}}">
                 </div>
             </div>
         </div>

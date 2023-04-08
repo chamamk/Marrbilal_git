@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="form-group">
                   <label>Mode Paiement</label>
-                  <input type="text" class="form-control" name="modepaiement">
+                  <input type="text" class="form-control" name="modepaiement" value="{{old('modepaiement')}}">
             </div>
         </div>
     </div>
