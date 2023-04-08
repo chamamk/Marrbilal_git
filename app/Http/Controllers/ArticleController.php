@@ -24,6 +24,11 @@ class ArticleController extends Controller
             } return
             view('article.index',compact('articles'));
     }
+    public function propriview()
+    {
+        $articles = Article::all();
+            return view ('article.printArticle')->with('articles',$articles);
+    }
     public function getArticle()
     {
         $data['articles'] = Article::all();

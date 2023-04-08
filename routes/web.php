@@ -26,7 +26,7 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('accueil');
-});
+})->middleware('auth');
 // Route::get('/Profile',[RegisterController::class,'create']);
 // Route::post('/register',[RegisterController::class,'store'])->name('register');
 // Route::post('/accueil',[LoginController::class,'check'])->name('accueil');
@@ -35,6 +35,7 @@ Route::resource('typemarbre',TypeMarbreController::class);
 Route::resource('modepayment',ModePaiementController::class);
 Route::resource('article',ArticleController::class);
 Route::resource('client',ClientController::class);
+Route::get('/propriview',[ArticleController::class , 'propriview']);
 Route::resource('achat',AchatController::class);
 Route::resource('bonCommande',BonCommandeController::class);
 Route::resource('bl',BlController::class);

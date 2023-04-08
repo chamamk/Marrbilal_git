@@ -24,7 +24,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" name="password" id="password"class="form-control" 
+                            <input type="password" name="password" id="password"class="form-control"
                             required autocomplete="new-password">
                         </div>
                     </div>
@@ -32,16 +32,16 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="password_confirmation">Confirm Password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" 
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
                             required autocomplete="new-password">
                         </div>
                     </div>
 
                     <div class="col-md-12">
-                        <a href="{{ route('login') }}">Already have account?</a>
+                        <input type="submit" value="Save" class="btn btn-success">
+                        <a href="{{ route('login') }}" class="btn btn-primary">Already have account?</a>
                     </div>
                 </div>
-                <input type="submit" value="Save" class="btn btn-success">
             </form>
         </div>
     </div>

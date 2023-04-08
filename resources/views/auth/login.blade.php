@@ -63,7 +63,7 @@
                                     <input type="email" name="email" id="email" class="form-control" value="{{old('email')}}" required autofocus autocomplete="username" >
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="password">Password</label>
@@ -71,12 +71,10 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <a href="{{ route('register') }}">New account?</a>
+                                <input type="submit" value="Login" class="btn btn-success">
+                                <a href="{{ route('register') }}" class="btn btn-primary">New account?</a>
                             </div>
                             </div>
-                        <div>
-                            <input type="submit" value="Login" class="btn btn-success">
-                        </div>
                     </form>
                 </div>
             </div>
