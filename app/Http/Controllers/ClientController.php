@@ -22,7 +22,7 @@ class ClientController extends Controller
             } return
             view('client.index',compact('clients'));
     }
-    public function propriview()
+    public function printviewclient()
     {
         $clients = Client::all();
             return view ('client.printClient')->with('clients',$clients);
@@ -50,7 +50,7 @@ class ClientController extends Controller
             "nomcomplete" => "required|string",
             "cin" => "required|string",
             "comptebancaire" => "required|integer",
-            "telephone" => "required|string",
+            "telephone" => "required|integer",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);
@@ -83,7 +83,7 @@ class ClientController extends Controller
             "nomcomplete" => "required|string",
             "cin" => "required|string",
             "comptebancaire" => "required|integer",
-            "telephone" => "required|string",
+            "telephone" => "required|integer",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);

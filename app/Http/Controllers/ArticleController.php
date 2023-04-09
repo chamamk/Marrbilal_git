@@ -24,7 +24,7 @@ class ArticleController extends Controller
             } return
             view('article.index',compact('articles'));
     }
-    public function propriview()
+    public function printviewarticle()
     {
         $articles = Article::all();
             return view ('article.printArticle')->with('articles',$articles);

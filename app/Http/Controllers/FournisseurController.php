@@ -21,7 +21,7 @@ class FournisseurController extends Controller
             } return
              view('fournisseur.index',compact('fournisseurs'));
     }
-    public function propriview()
+    public function printviewfournisseur()
     {
         $fournisseurs = Fournisseur::all();
             return view ('fournisseur.printFournisseur')->with('fournisseurs',$fournisseurs);
@@ -38,7 +38,7 @@ class FournisseurController extends Controller
         $request->validate([
             "nomcomplet" => "required|string",
             "comptebancaire" => "required|string",
-            "telephone" => "required|string",
+            "telephone" => "required|integer",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);
@@ -63,7 +63,7 @@ class FournisseurController extends Controller
         $request->validate([
             "nomcomplet" => "required|string",
             "comptebancaire" => "required|string",
-            "telephone" => "required|string",
+            "telephone" => "required|integer",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);

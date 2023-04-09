@@ -24,7 +24,7 @@ class BonCommandeController extends Controller
             } return
              view('bonCommande.index',compact('bonsCommande'));
     }
-    public function propriview()
+    public function printviewbon()
     {
         $bonsCommande = BonCommande::all();
             return view ('bonCommande.printBon')->with('bonsCommande',$bonsCommande);

@@ -12,31 +12,26 @@ use App\Http\Controllers\BonCommandeController;
 use App\Http\Controllers\BlController;
 use App\Http\Controllers\LoginController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('accueil');
 })->middleware('auth');
 
 Route::resource('fournisseur',FournisseurController::class);
+Route::get('/printviewfournisseur',[FournisseurController::class , 'printviewfournisseur']);
 Route::resource('typemarbre',TypeMarbreController::class);
 Route::resource('modepayment',ModePaiementController::class);
 Route::resource('article',ArticleController::class);
+Route::get('/printviewarticle',[ArticleController::class , 'printviewarticle']);
 Route::resource('client',ClientController::class);
-Route::get('/propriview',[ArticleController::class , 'propriview']);
+Route::get('/printviewclient',[ClientController::class , 'printviewclient']);
 Route::resource('achat',AchatController::class);
+Route::get('/printviewachat',[AchatController::class , 'printviewachat']);
 Route::resource('bonCommande',BonCommandeController::class);
-Route::resource('bl',BlController::class);
+Route::get('/printviewbon',[BonCommandeController::class , 'printviewbon']);
 Route::get('/Caisse', [BonCommandeController::class , 'caisse'])->name('caisse');
+Route::resource('bl',BlController::class);
+Route::get('/printviewbl',[BlController::class , 'printviewbl']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile');

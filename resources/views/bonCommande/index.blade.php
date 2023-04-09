@@ -162,5 +162,12 @@
                 </div>
             </div>
         </div>
+        <a href="{{url('/printviewbon')}}" class="btn btn-primary">Imprission des bons</a>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.btnprn').printPage();
+            }
+            );
+        </script>
     </div>
 @endsection

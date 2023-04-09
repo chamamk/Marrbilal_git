@@ -21,7 +21,7 @@ class AchatController extends Controller
             } return
             view('achat.index',compact('achats'));
     }
-    public function propriview()
+    public function printviewachat()
     {
         $achats = Achat::all();
             return view ('achat.printAchat')->with('achats',$achats);
