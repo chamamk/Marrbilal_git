@@ -11,10 +11,6 @@ class ModePaiementController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
         $modesPaiement=ModePaiement::all();
@@ -26,7 +22,7 @@ class ModePaiementController extends Controller
      */
     public function getPayment()
     {
-        $data['modePayyment']=ModePaiement::all();
+        $data['modePayyment']=ModePaiement::all();     
             return response()->json($data);
     }
     public function create()

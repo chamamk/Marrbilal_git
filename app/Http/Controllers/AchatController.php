@@ -8,10 +8,10 @@ use App\Http\Requests\UpdateAchatRequest;
 
 class AchatController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     public function index()
     {
         if (request('search2')) {

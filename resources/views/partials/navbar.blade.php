@@ -63,7 +63,7 @@
                 </li>
 
                 <li class="nav-link">
-                    <a href="{{ route('register') }}">
+                    <a href="/Profile">
                         <i class='bx bxs-wrench icon' ></i>
                         <span class="text nav-text">Paramètres </span>
                     </a>
@@ -71,20 +71,12 @@
             </ul>
         </div>
         <div class="bottom-content">
-        <!-- Authentication -->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();" style="text-decoration:none">
-                <i class='bx bx-log-out icon' ></i>
-                <span class="text nav-text">Logout</span>
-            </a>
-        </form>
-            {{-- <li class="">
+            <li class="">
                 <a href="#">
                     <i class='bx bx-log-out icon' ></i>
                     <span class="text nav-text">Logout</span>
                 </a>
-            </li> --}}
+            </li>
         </div>
     </div>
 </nav>
