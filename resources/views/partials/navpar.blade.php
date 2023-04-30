@@ -3,7 +3,7 @@
         <h4 class="text-center">Mar Bilal</h4>
     </div>
     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link" id="account-tab"  href="/Profile">
+        <a class="nav-link " id="account-tab"  href="/Profile">
             <i class="fa fa-home text-center mr-1"></i> 
             Votre Profile
         </a>
@@ -16,4 +16,5 @@
             Type Marbre
         </a>
     </div>
+{{-- {{str_replace(url('/'), '', url()->previous()) == '/Profile' ? 'active' : '' }} --}}
 </div>

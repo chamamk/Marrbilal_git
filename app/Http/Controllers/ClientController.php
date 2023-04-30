@@ -50,7 +50,7 @@ class ClientController extends Controller
             "nomcomplete" => "required|string",
             "cin" => "required|string",
             "comptebancaire" => "required|integer",
-            "telephone" => "required|integer",
+            "telephone" => "required",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);
