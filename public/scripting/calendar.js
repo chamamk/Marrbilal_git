@@ -1,9 +1,10 @@
+
 function CalendarControl() {
     const calendar = new Date();
     const calendarControl = {
       localDate: new Date(),
       prevMonthLastDate: null,
-      calWeekDays: ["Lundi", "Mardi", "Mercredi", "jeudi", "Vendredi", "Samedi", "Dimenche"],
+      calWeekDays: ["Dimenche","Lundi", "Mardi", "Mercredi", "jeudi", "Vendredi", "Samedi"],
       calMonthName: [
         "Jan",
         "Feb",

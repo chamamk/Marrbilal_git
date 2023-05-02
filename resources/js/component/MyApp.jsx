@@ -14,7 +14,7 @@ function MyApp() {
     const [Longue ,  setLongueur] = useState(0)
     const [Largeur , setLargeur] = useState(0)
     const [avances,setAvances] = useState(0)
- 
+    const [dateecheance , setDateCheance] = useState()
     const getclient = () =>{
         axios.get("http://127.0.0.1:8000/api/getclient")
       .then(item => {
@@ -47,8 +47,8 @@ function MyApp() {
             FindItem.datec = Datec
             FindItem.longueur = 1
             FindItem.largeur = 1
-            FindItem.avance = 0
-            FindItem.dateecheance = "dateecheance"
+            FindItem.avance = Number(avances)
+            FindItem.dateecheance = dateecheance
             FindItem.mode_paiement_id  = modePaiement
             FindItem.article_id = articleId
             FindItem.client_id =  clientId
@@ -82,7 +82,7 @@ function MyApp() {
                 e.target.value = parseFloat(value).toFixed(2);
                 e.target.setSelectionRange(start,start);
                 setLongueur(parseFloat(value).toFixed(2));
-                 item.longueur = Longue
+                 item.longueur = parseFloat(Longue)
             setAllProduct([...AllProduct])
       }
     }
@@ -100,31 +100,30 @@ function MyApp() {
             e.target.value = parseFloat(value).toFixed(2);
             e.target.setSelectionRange(start,start);
             setLargeur(parseFloat(value).toFixed(2));
-            item.largeur = Largeur
+            item.largeur = parseFloat(Largeur)
             setAllProduct([...AllProduct])
     }
 }
-
-    const HandelAvances = (e,item) =>{
-            setAvances(e.target.value)
-            item.avance = Number(avances)
-            setAllProduct([...AllProduct])
-        
-       
-    }
+const DeleteFromCaisse = (nom) => {
+    const DeleteArticle = AllProduct.filter(x => x.nomcommercial !== nom)
+    setAllProduct(DeleteArticle)
+  }
     console.log(AllProduct)
+    const total = AllProduct.reduce(function (total, produit) {
+        return total += (( produit.largeur * produit.longueur) * produit.prix * produit.qte)
+      }, 0)
     return (
     <>
     <div className="col-12">
     <div className="card mb-4 w-95">
-        <div className="card-header pb-0 d-flex justify-content-between">
+        <div className="card-header pb-0 d-flex ">
             {/* <h6>La Caisse</h6>  */}
-            <div className="row float-end">
+            <div className="row float-start">
                 <div className="col-md-4">
                     <div className="form-group">
                         <label htmlFor="article_id" className="form-control-label">Article</label>
                         <select className="form-control" type="text" name="article_id" id="article_id" onChange={e=>setArticleId(e.target.value)}>
-                        <option>----Choiser Votre Client----</option>
+                        <option>----Choiser Votre Article----</option>
                         {
                             article?.map(item=>(
                                 <option value={item.id} key={item.id}>{item.nomcommercial}</option>
@@ -150,7 +149,7 @@ function MyApp() {
                     <div className="form-group">
                         <label htmlFor="payment" className="form-control-label">Mode Paiement</label>
                         <select className="form-control" type="text" name="payment" id="payment" onChange={e=>setModePaimaent(e.target.value)}>
-                        <option>----Choiser Votre Client----</option>
+                        <option>----Choiser Votre Paiment----</option>
                         {
                             payment?.map(item=>(
                                 <option value={item.id} key={item.id}>{item.modepaiement}</option>
@@ -160,17 +159,33 @@ function MyApp() {
                     </div>
                 </div>
             </div>
-            <div className="col-md-3 w-25">
+            <div className="row mx-2">
+            <div className="col-md-6">
                 <div className="form-group">
                 <label  className="form-control-label">Date de Bon de Commande</label>
-                <input className="form-control" type="date" onChange={e=>setDateC(e.target.value)}/>
+                    <input className="form-control" type="date" onChange={e=>setDateC(e.target.value)}/>
                 </div>
             </div>
-            <div className="col-md-3 mt-3">
+            <div className="col-md-6">
+                <div className="form-group">
+                <label  className="form-control-label">Date Cheance</label>
+                    <input className="form-control" type="date" id="datepicker" onChange={e=>setDateCheance(e.target.value)}/>
+                </div>
+            </div>
+            </div>
+            <div className="row">
+            <div className="col-md-6">
+                <div className="form-group">
+                <label  className="form-control-label">Avances</label>
+                    <input type="number" className="form-control" onChange={e=>setAvances(e.target.value)}/>
+                </div>
+            </div>
+            <div className="col-md-6 mt-4">
                 <div className="form-group">
                 <label  className="form-control-label"></label>
                     <button type="button" className="btn btn-success fa fa-plus ms-5 py-2 px-3" onClick={AddArticle}></button>
                 </div>
+            </div>
             </div>
         </div>
         <div className="card-body px-0 pt-0 pb-2">
@@ -286,8 +301,10 @@ function MyApp() {
                                 <td className="align-middle text-center">
                                 <span className="text-lg font-weight-bold d-flex justify-content-between">
                                         <div className="col-md-3 mt-3">
-                                            <div className="form-group">
-                                                <input  type="text"  className='form-group text-center' style={{width : "80px"}} onChange={e=>HandelAvances(e,item)}/>
+                                            <div className="form-group text-center">
+                                                <span className='mx-5'>
+                                                    { avances ? avances : 0 } DH
+                                                </span>
                                             </div>
                                         </div>
                                     </span>
@@ -300,7 +317,7 @@ function MyApp() {
                                     <span className="text-xs font-weight-bold">{ item.dateecheance }</span>
                                     </td>
                                 <td className="align-middle text-center cursor-pointe">
-                                    <button className='btn btn-danger'>Delete</button>
+                                    <button className='bg-transparent border-0 text-danger h4 bg bx bx-trash' onClick={() => DeleteFromCaisse(item.nomcommercial)}></button>
                                 </td>
                             </tr>
                         ))
@@ -311,7 +328,23 @@ function MyApp() {
             </div>
         </div>
     </div>
-</div>                   
+    <div className='col-md'>
+        <div className='col-md float-end bg-transparent opacity-100 py-4'>
+            <span className='text-dark text'>
+                {(total - avances).toFixed(2)} DH
+            </span>
+        </div>
+            <div className='col-md border border-white rounded float-end bg-danger py-4'>
+                <span className='text-white text'>Total</span><br/>
+            </div>
+        </div>
+    </div>   
+    <div className='col-md mx-5'>
+            <div className='col-md-6'>
+            <button type="submit" className="btn btn-warning px-5 py-4 mx-0 my-3">Valider</button>
+            </div>
+    </div>
+                     
 </>
     );
 }
