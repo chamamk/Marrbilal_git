@@ -41,13 +41,12 @@ function MyApp() {
       function AddArticle(e){
         e.preventDefault()
         const FindItem = article.find(x => x.id === Number(articleId))
-        // console.log(FindItem)
         if(FindItem){
             FindItem.qte = 1
             FindItem.datec = Datec
             FindItem.longueur = 1
             FindItem.largeur = 1
-            FindItem.avance = Number(avances)
+            FindItem.avance = avances
             FindItem.dateecheance = dateecheance
             FindItem.mode_paiement_id  = modePaiement
             FindItem.article_id = articleId
@@ -86,7 +85,6 @@ function MyApp() {
             setAllProduct([...AllProduct])
       }
     }
-
     const largeurChange = (item,e)=>{
         let start = 0
         start = e.target.selectionStart;
@@ -102,21 +100,39 @@ function MyApp() {
             setLargeur(parseFloat(value).toFixed(2));
             item.largeur = parseFloat(Largeur)
             setAllProduct([...AllProduct])
-    }
+        }
 }
-const DeleteFromCaisse = (nom) => {
+    const DeleteFromCaisse = (nom) => {
     const DeleteArticle = AllProduct.filter(x => x.nomcommercial !== nom)
     setAllProduct(DeleteArticle)
-  }
-    console.log(AllProduct)
+    }
     const total = AllProduct.reduce(function (total, produit) {
-        return total += (( produit.largeur * produit.longueur) * produit.prix * produit.qte)
-      }, 0)
+        return total += (( produit.largeur * produit.longueur) * produit.prix * produit.qte) 
+    }, 0)
+    
+    console.log(AllProduct)
+      const InsertData = async (e) => {
+        e.preventDefault()
+        axios.post("http://127.0.0.1:8000/api/Caisse" , AllProduct)
+         .then(Response=>{
+                console.log(Response.data.status)
+                if(Response.data.status === 200){
+                    setAllProduct([])
+                    // setPayment('')
+                    // setArticle('')
+                    // setClient('')
+                    // setDateC('')
+                    // setAvances('')
+                    // setDateCheance('')
+                }
+            })
+      }
+    
     return (
     <>
     <div className="col-12">
     <div className="card mb-4 w-95">
-        <div className="card-header pb-0 d-flex ">
+        <div className="card-header pb-0 d-flex">
             {/* <h6>La Caisse</h6>  */}
             <div className="row float-start">
                 <div className="col-md-4">
@@ -177,7 +193,7 @@ const DeleteFromCaisse = (nom) => {
             <div className="col-md-6">
                 <div className="form-group">
                 <label  className="form-control-label">Avances</label>
-                    <input type="number" className="form-control" onChange={e=>setAvances(e.target.value)}/>
+                    <input type="number" className="form-control" onChange={e=>{setAvances(e.target.value)}}/>
                 </div>
             </div>
             <div className="col-md-6 mt-4">
@@ -331,7 +347,7 @@ const DeleteFromCaisse = (nom) => {
     <div className='col-md'>
         <div className='col-md float-end bg-transparent opacity-100 py-4'>
             <span className='text-dark text'>
-                {(total - avances).toFixed(2)} DH
+                {(total * 1.10 - avances).toFixed(2)} DH
             </span>
         </div>
             <div className='col-md border border-white rounded float-end bg-danger py-4'>
@@ -341,7 +357,7 @@ const DeleteFromCaisse = (nom) => {
     </div>   
     <div className='col-md mx-5'>
             <div className='col-md-6'>
-            <button type="submit" className="btn btn-warning px-5 py-4 mx-0 my-3">Valider</button>
+                <button type="submit" className="btn btn-warning px-5 py-4 mx-0 my-3" onClick={InsertData}><span className='text-lg'>Valider</span></button>
             </div>
     </div>
                      

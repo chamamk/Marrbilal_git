@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ModePaiementController;
+use App\Http\Controllers\BonCommandeController;
 
 
 /*
@@ -25,3 +26,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/getclient', [ClientController::class , 'getClient']);
 Route::get('/getarticle', [ArticleController::class , 'getArticle']);
 Route::get('/getpayment', [ModePaiementController::class , 'getPayment']);
+Route::post('/Caisse' , [BonCommandeController::class , 'insertDataByCaisse']);

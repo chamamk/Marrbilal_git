@@ -19,8 +19,8 @@ return new class extends Migration
             $table->float('qte');
             $table->float('prix');
             $table->string('unite');
-            $table->float('pourcentageChute');
-            $table->float('avance')->nullable();
+            $table->float('pourcentageChute')->nullable();
+            $table->float('avance')->default(0);
             $table->date('dateecheance');
             $table->foreignId('mode_paiement_id')->constrained();
             $table->foreignId('article_id')->constrained();

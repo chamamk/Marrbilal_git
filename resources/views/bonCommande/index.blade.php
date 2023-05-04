@@ -119,16 +119,16 @@
                                         </td>
                                         <td class="align-middle text-center">
 
-                                            <span class="text-xs font-weight-bold">{{ $bonCommande->Surface() }}</span>
+                                            <span class="text-xs font-weight-bold">{{ $bonCommande->longueur * $bonCommande->largeur }}</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">{{ $bonCommande->unite }}</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">{{ $bonCommande->prix }}</span>
+                                            <span class="text-xs font-weight-bold">{{ $bonCommande->prix }} DH</span>
                                         </td>
                                         <td class="align-middle text-center">
-                                            <span class="text-xs font-weight-bold">{{ $bonCommande->total() }}</span>
+                                            <span class="text-xs font-weight-bold">{{ ($bonCommande->longueur * $bonCommande->largeur) * $bonCommande->qte * $bonCommande->prix  }} DH</span>
                                         </td>
                                         <td class="align-middle text-center">
                                             <span

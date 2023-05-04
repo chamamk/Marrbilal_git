@@ -8,13 +8,6 @@ use App\Http\Requests\UpdateBonCommandeRequest;
 
 class BonCommandeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
     public function index()
     {
         if (request('search3')) {
@@ -54,6 +47,27 @@ class BonCommandeController extends Controller
         ]);
         BonCommande::create($request->all());
         return redirect()->route('bonCommande.index');
+    }
+    public function insertDataByCaisse(StoreBonCommandeRequest $request){
+        foreach ($request->all() as $value) {
+                BonCommande::create([
+                        "datebc" => $value['datec'],
+                        "longueur" => $value['longueur'],
+                        "largeur" => $value['largeur'],
+                        "qte" => $value['qte'],
+                        "prix" => $value['prix'],
+                        "unite" => $value['unite'],
+                        "pourcentageChute" => 1.10,
+                        "avance" => $value['avance'],
+                        "dateecheance" =>$value['dateecheance'],
+                        "mode_paiement_id" =>$value['mode_paiement_id'] ,
+                        "article_id"=> $value['article_id'],
+                        "client_id"=> $value['client_id'],
+                        ]
+                    );  
+                } 
+                 return Response()->json(['status' => 200, 'message' => 'data inserted']); 
+             
     }
 
     /**
