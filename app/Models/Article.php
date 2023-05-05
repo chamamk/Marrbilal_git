@@ -17,9 +17,9 @@ class Article extends Model
         'active',
         'type_marbre_id'
     ];
-    public function typemarbre()
+    public function Typemarbre()
     {
-        return $this->belongsTo(TypeMarbre::class);
+        return $this->hasMany(TypeMarbre::class);
     }
     public function bonCommandes()
     {

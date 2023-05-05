@@ -13,7 +13,7 @@ class TypeMarbre extends Model
     ];
     public function articles()
     {
-        return $this->hasMany(Article::class);
+        return $this->belongsTo(Article::class);
     }
 
 }

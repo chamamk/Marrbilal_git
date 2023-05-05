@@ -1,4 +1,5 @@
 import {React  , useEffect, useState} from 'react';
+import Swal from 'sweetalert2'
 import axios from 'axios';
 function MyApp() {
     const [client , setClient] = useState([])
@@ -103,8 +104,41 @@ function MyApp() {
         }
 }
     const DeleteFromCaisse = (nom) => {
-    const DeleteArticle = AllProduct.filter(x => x.nomcommercial !== nom)
-    setAllProduct(DeleteArticle)
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: ' btn btn-success',
+              cancelButton: ' btn btn-danger'
+            },
+            buttonsStyling: false
+          })
+          swalWithBootstrapButtons.fire({
+            title: 'Es-tu sûr ?',
+            text: "Vous ne pourrez pas revenir en arrière !",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Oui, supprimez-le !',
+            cancelButtonText: 'Non, annulez !',
+            reverseButtons: true
+          }).then((result) => {
+            if (result.isConfirmed) {
+              swalWithBootstrapButtons.fire(
+                'Supprimé !',
+                'Votre Article a été supprimé.',
+                'succès'
+              )
+              const DeleteArticle = AllProduct.filter(x => x.nomcommercial !== nom)
+              setAllProduct(DeleteArticle)
+            } else if (
+              /* Read more about handling dismissals below */
+              result.dismiss === Swal.DismissReason.cancel
+            ) {
+              swalWithBootstrapButtons.fire(
+                'Annulé',
+                'Votre Article imaginaire est en sécurité :)',
+                'erreur'
+              )
+            }
+          })
     }
     const total = AllProduct.reduce(function (total, produit) {
         return total += (( produit.largeur * produit.longueur) * produit.prix * produit.qte) 
@@ -113,21 +147,30 @@ function MyApp() {
     console.log(AllProduct)
       const InsertData = async (e) => {
         e.preventDefault()
-        axios.post("http://127.0.0.1:8000/api/Caisse" , AllProduct)
-         .then(Response=>{
-                console.log(Response.data.status)
-                if(Response.data.status === 200){
-                    setAllProduct([])
-                    // setPayment('')
-                    // setArticle('')
-                    // setClient('')
-                    // setDateC('')
-                    // setAvances('')
-                    // setDateCheance('')
-                }
-            })
+        Swal.fire({
+            title: 'Voulez-vous enregistrer les modifications ?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Sauvegarder',
+            denyButtonText: `Ne pas enregistrer`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              Swal.fire('enregistré(e)!', '', 'success')
+             axios.post("http://127.0.0.1:8000/api/Caisse" , AllProduct)
+              .then(Response=>{
+                     console.log(Response.data.status)
+                 })
+                 axios.post("http://127.0.0.1:8000/api/Caisse" , AllProduct)
+                 .then(Response=>{
+                        console.log(Response.data.status)
+                    })
+              setAllProduct([])
+            } else if (result.isDenied) {
+              Swal.fire('Les modifications ne sont pas enregistrées', '', 'info')
+            }
+          })
       }
-    
     return (
     <>
     <div className="col-12">
