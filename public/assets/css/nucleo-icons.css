@@ -592,6 +592,11 @@ License - nucleoapp.com/license/
 .ni-ui-04::before {
   content: "\ea65";
 }
-
+/* Custom css */
+@media print {
+    .print-hide{
+      display: none;
+    }
+  }
 
 /* all icon font classes list here */

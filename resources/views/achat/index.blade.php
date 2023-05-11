@@ -6,10 +6,10 @@
     @include('partials.cards')
     <div class="col-12">
         <div class="card mb-4 w-95">
-            <div class="card-header pb-0 d-flex justify-content-between">
+            <div class="card-header pb-0 d-flex justify-content-between print-hide">
                 <h6>Table des Achats</h6>
                 <div class="input-group">
-                    <div class="col-lg-11">
+                    <div class="col-lg-11 print-hide">
                         <form class="d-flex" name="form2">
                             <input id="search-input" type="search" name="search2" id="search2" onchange="form2.submit()"
                                 class="form-control h-75 " placeholder="Search anything...">
@@ -18,7 +18,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="Ajouter-Achat">
+                    <div class="Ajouter-Achat print-hide">
                         <a href="{{ route('achat.create') }}" id="search-button" type="button"
                             class="btn btn-success h-75 ms-5">
                             <i class="fa fa-plus"></i>
@@ -50,7 +50,7 @@
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Quantité</th>
-                                        <th
+                                    <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Surface</th>
                                     <th
@@ -59,7 +59,7 @@
                                     <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Prix</th>
-                                        <th
+                                    <th
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Total</th>
                                     <th
@@ -148,12 +148,8 @@
                 </div>
             </div>
         </div>
-        <a href="{{url('/printviewachat')}}" class="btn btn-primary">Imprission des Achats</a>
-            {{-- <script type="text/javascript">
-                $(document).ready(function(){
-                    $('.btnprn').printPage();
-                }
-                );
-            </script> --}}
+        <div class="print-hide">
+            <button onclick="window.print()" class="btn btn-primary print-hide">Impression des Achats</button>
+        </div>
     </div>
 @endsection

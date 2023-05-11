@@ -8,8 +8,8 @@
         <div class="card mb-4 w-95">
             <div class="card-header pb-0 d-flex justify-content-between">
                 <h6>Table des Fournisseur</h6>
-                <div class="input-group">
-                    <div class="col-lg-11">
+                <div class="input-group print-hide">
+                    <div class="col-lg-11 print-hide">
                         <form class="d-flex" name="form1">
                             <input id="search-input" type="search" name="search1" id="search1" onchange="form1.submit()"
                                 class="form-control h-75 " placeholder="Search anything...">
@@ -18,7 +18,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="Ajouter-Fournisseur">
+                    <div class="Ajouter-Fournisseur print-hide">
                         <a href="{{ route('fournisseur.create') }}" id="search-button" type="button"
                             class="btn btn-success h-75 ms-5">
                             <i class="fa fa-plus"></i>
@@ -51,7 +51,7 @@
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Ville</th>
                                     <th
-                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
+                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7 print-hide">
                                         Action</th>
                                 </tr>
                             </thead>
@@ -78,7 +78,7 @@
                                         <td class="align-middle text-center">
                                             <span class="text-xs font-weight-bold">{{ $fournisseur->ville }}</span>
                                         </td>
-                                        <td class="align-middle text-center cursor-pointe">
+                                        <td class="align-middle text-center cursor-pointe print-hide">
 
                                             <form action="{{ route('fournisseur.destroy', $fournisseur->id) }}"
                                                 method="POST">
@@ -94,8 +94,6 @@
                                                 </button>
                                             </form>
                                         </td>
-
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -104,12 +102,8 @@
                 </div>
             </div>
         </div>
-        <a href="{{url('/printviewfournisseur')}}" class="btn btn-primary">Imprission des fournisseurs</a>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.btnprn').printPage();
-            }
-            );
-        </script>
+        <div class="print-hide">
+            <button onclick="window.print()" class="btn btn-primary print-hide">Impression des Achats</button>
+        </div>
     </div>
 @endsection

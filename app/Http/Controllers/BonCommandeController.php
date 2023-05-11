@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateBonCommandeRequest;
 
 class BonCommandeController extends Controller
 {
+    // Methode d'affichage
     public function index()
     {
         if (request('search3')) {
@@ -17,18 +18,19 @@ class BonCommandeController extends Controller
             } return
              view('bonCommande.index',compact('bonsCommande'));
     }
-    // public function printviewbon()
-    // {
-    //     $bonsCommande = BonCommande::all();
-    //         return view ('bonCommande.printBon')->with('bonsCommande',$bonsCommande);
-    // }
+
+    // Methode retourne view de la caisse
     public function caisse(){
         return view('bonCommande.caisse');
     }
+
+    // Methode retourne view d'ajout
     public function create()
     {
         return view('bonCommande.create');
     }
+
+    // Methode d'ajout
     public function store(StoreBonCommandeRequest $request)
     {
         $request->validate([
@@ -48,6 +50,8 @@ class BonCommandeController extends Controller
         BonCommande::create($request->all());
         return redirect()->route('bonCommande.index');
     }
+
+    // Methode d'ajout automatique avec boucle dans la table de bon de commande
     public function insertDataByCaisse(StoreBonCommandeRequest $request){
         foreach ($request->all() as $value) {
                 BonCommande::create([
@@ -78,17 +82,13 @@ class BonCommandeController extends Controller
         return view ('bonCommande.show',compact('bonCommande'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Methode d'édition
     public function edit(BonCommande $bonCommande)
     {
         return view ('bonCommande.edit',compact('bonCommande'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Methode de mise à jour
     public function update(UpdateBonCommandeRequest $request, BonCommande $bonCommande)
     {
         $request->validate([
@@ -109,9 +109,7 @@ class BonCommandeController extends Controller
         return redirect()->route('bonCommande.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    // Methode de suppression
     public function destroy(BonCommande $bonCommande)
     {
         $bonCommande->delete();

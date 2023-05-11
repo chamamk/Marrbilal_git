@@ -1,4 +1,4 @@
-<nav class="sidebar close">
+<nav class="sidebar close print-hide">
     <header>
         <div class="image-text">
             <span class="image">

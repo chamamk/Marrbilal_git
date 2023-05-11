@@ -8,10 +8,7 @@ use App\Http\Requests\UpdateFournisseurRequest;
 
 class FournisseurController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    // Methode d'affichage
     public function index()
     {
         if (request('search1')) {
@@ -21,18 +18,14 @@ class FournisseurController extends Controller
             } return
              view('fournisseur.index',compact('fournisseurs'));
     }
-    // public function printviewfournisseur()
-    // {
-    //     $fournisseurs = Fournisseur::all();
-    //         return view ('fournisseur.printFournisseur')->with('fournisseurs',$fournisseurs);
-    // }
 
+    // Methode retourne view d'ajout
     public function create()
     {
         return view('fournisseur.create');
     }
 
-
+    // Methode d'ajout
     public function store(StoreFournisseurRequest $request)
     {
         $request->validate([
@@ -52,12 +45,13 @@ class FournisseurController extends Controller
         return view ('fournisseur.show',compact('fournisseur'));
     }
 
-
+    // Methode d'édition
     public function edit(Fournisseur $fournisseur)
     {
         return view ('fournisseur.edit',compact('fournisseur'));
     }
 
+    // Methode de mise à jour
     public function update(UpdateFournisseurRequest $request, Fournisseur $fournisseur)
     {
         $request->validate([
@@ -71,8 +65,8 @@ class FournisseurController extends Controller
         return redirect()->route('fournisseur.index');
 
     }
-
-
+    
+    // Methode de suppression
     public function destroy(Fournisseur $fournisseur)
     {
         $fournisseur->delete();

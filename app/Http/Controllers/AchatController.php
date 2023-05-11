@@ -8,10 +8,7 @@ use App\Http\Requests\UpdateAchatRequest;
 
 class AchatController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+   //Methode d'affichage avec search
     public function index()
     {
         if (request('search2')) {
@@ -21,15 +18,13 @@ class AchatController extends Controller
             } return
             view('achat.index',compact('achats'));
     }
-    // public function printviewachat()
-    // {
-    //     $achats = Achat::all();
-    //         return view ('achat.printAchat')->with('achats',$achats);
-    // }
+    //Methode return view de creation
+
     public function create()
     {
         return view('achat.create');
     }
+    //Methode d'ajouter
     public function store(StoreAchatRequest $request)
     {
         $request->validate([
@@ -56,17 +51,13 @@ class AchatController extends Controller
         return view ('achat.show',compact('achat'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   // Methode d'édition
     public function edit(Achat $achat)
     {
         return view ('achat.edit',compact('achat'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Methode de mise à jour
     public function update(UpdateAchatRequest $request, Achat $achat)
     {
         $request->validate([
@@ -85,9 +76,7 @@ class AchatController extends Controller
         return redirect()->route('achat.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //Methode de suppression
     public function destroy(Achat $achat)
     {
         $achat->delete();

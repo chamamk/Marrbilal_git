@@ -8,8 +8,8 @@
         <div class="card mb-4 w-95">
             <div class="card-header pb-0 d-flex justify-content-between">
                 <h6>Table des Clients</h6>
-                <div class="input-group">
-                    <div class="col-lg-11">
+                <div class="input-group print-hide">
+                    <div class="col-lg-11 print-hide">
                         <form class="d-flex" name="form1">
                             <input id="search-input" type="search" name="search1" id="search1" onchange="form1.submit()"
                                 class="form-control h-75 " placeholder="Search anything...">
@@ -18,7 +18,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="Ajouter-Client">
+                    <div class="Ajouter-Client print-hide">
                         <a href="{{ route('client.create') }}" id="search-button" type="button"
                             class="btn btn-success h-75 ms-5">
                             <i class="fa fa-plus"></i>
@@ -54,7 +54,7 @@
                                         class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
                                         Ville</th>
                                     <th
-                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">
+                                        class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7 print-hide">
                                         Action</th>
                                 </tr>
                             </thead>
@@ -109,12 +109,8 @@
                 </div>
             </div>
         </div>
-        <a href="{{url('/printviewclient')}}" class="btn btn-primary">Imprission des clients</a>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $('.btnprn').printPage();
-            }
-            );
-        </script>
+        <div class="print-hide">
+            <button onclick="window.print()" class="btn btn-primary print-hide">Impression des Achats</button>
+        </div>
     </div>
 @endsection

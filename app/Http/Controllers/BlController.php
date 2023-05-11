@@ -8,32 +8,19 @@ use App\Http\Requests\UpdateBlRequest;
 
 class BlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    // Methode d'affichage
     public function index()
     {
         $bls=Bl::all();
         return view('bl.index',compact('bls'));
     }
-
-    // public function printviewbl()
-    // {
-    //     $bls = Bl::all();
-    //         return view ('bl.printBl')->with('bls',$bls);
-    // }
+    // Methode view d'ajout
     public function create()
     {
         return view('bl.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Methode d'ajout
     public function store(StoreBlRequest $request)
     {
         $request->validate([
@@ -59,17 +46,13 @@ class BlController extends Controller
         return view ('bl.show',compact('bl'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Methode d'édition
     public function edit(Bl $bl)
     {
         return view ('bl.edit',compact('bl'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    // Methode de mise à jour
     public function update(UpdateBlRequest $request, Bl $bl)
     {
         $request->validate([

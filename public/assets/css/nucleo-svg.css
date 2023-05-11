@@ -49,9 +49,9 @@ Change icon size
   width: 2em;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Align icon and text 
+Align icon and text
 
 -------------------------------- */
 
@@ -75,7 +75,7 @@ Align icon and text
   stroke: currentColor;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Icon reset values - used to enable color customizations
 
@@ -99,7 +99,7 @@ Icon reset values - used to enable color customizations
   fill: none;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Stroke effects - Nucleo outline icons
 
@@ -133,3 +133,10 @@ Stroke effects - Nucleo outline icons
   -o-transform: translateX(0.5px) translateY(0.5px);
   transform: translateX(0.5px) translateY(0.5px);
 }
+
+/* Custom css */
+@media print {
+    .print-hide{
+      display: none;
+    }
+  }

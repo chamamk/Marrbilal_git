@@ -1,18 +1,21 @@
-
-<div class="row">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-      <div class="card">
+<div class="row print-hide">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 print-hide">
+      <div class="card print-hide">
         <div class="card-body p-3">
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                @php
+                use App\Models\Article;
+                $articles = Article::count();
+                @endphp
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Nombre Des Articles</p>
                 <h5 class="font-weight-bolder">
-                  $53,000
+                  {{$articles}}
                 </h5>
                 <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+55%</span>
-                  since yesterday
+                    <br>
+                  {{-- <span class="text-success text-sm font-weight-bolder"></span> --}}
                 </p>
               </div>
             </div>
@@ -25,19 +28,23 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 print-hide">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                @php
+                use App\Models\Fournisseur;
+                $fournisseurs = Fournisseur::count();
+                @endphp
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Nombre Des Fournisseurs</p>
                 <h5 class="font-weight-bolder">
-                  2,300
+                    {{$fournisseurs}}
                 </h5>
                 <p class="mb-0">
-                  <span class="text-success text-sm font-weight-bolder">+3%</span>
-                  since last week
+                    <br>
+                  {{-- <span class="text-success text-sm font-weight-bolder"></span> --}}
                 </p>
               </div>
             </div>
@@ -50,7 +57,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 print-hide">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
@@ -79,7 +86,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6">
+    <div class="col-xl-3 col-sm-6 print-hide">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">

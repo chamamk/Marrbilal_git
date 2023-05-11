@@ -8,13 +8,7 @@ use App\Http\Requests\UpdateArticleRequest;
 
 class ArticleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    //Methode d'affichage avec search
     public function index()
     {
         if (request('search1')) {
@@ -24,27 +18,22 @@ class ArticleController extends Controller
             } return
             view('article.index',compact('articles'));
     }
-    // public function printviewarticle()
-    // {
-    //     $articles = Article::all();
-    //         return view ('article.printArticle')->with('articles',$articles);
-    // }
+
+    //Methode qui retourne la liste des articles utilise dans la caisse
+    //Methode qui retourne la liste des articles en cours de vente
     public function getArticle()
     {
         $data['articles'] = Article::all();
             return response()->json($data);
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+
+    //Methode return view de creation
     public function create()
     {
         return view('article.create');
     }
 
-    /*
-     * Store a newly created resource in storage.
-     */
+    //Methode d'ajouter
     public function store(StoreArticleRequest $request)
     {
             $request->validate([
@@ -68,17 +57,13 @@ class ArticleController extends Controller
         return view ('article.show',compact('article'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    //Methode return view de modification
     public function edit(Article $article)
     {
         return view ('article.edit',compact('article'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    //Methode de modification
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $request->validate([
@@ -94,9 +79,7 @@ class ArticleController extends Controller
         return redirect()->route('article.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    //Methode de suppression
     public function destroy(Article $article)
     {
         $article->delete();
