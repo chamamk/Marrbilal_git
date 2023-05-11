@@ -21,11 +21,11 @@ class BlController extends Controller
         return view('bl.index',compact('bls'));
     }
 
-    public function printviewbl()
-    {
-        $bls = Bl::all();
-            return view ('bl.printBl')->with('bls',$bls);
-    }
+    // public function printviewbl()
+    // {
+    //     $bls = Bl::all();
+    //         return view ('bl.printBl')->with('bls',$bls);
+    // }
     public function create()
     {
         return view('bl.create');

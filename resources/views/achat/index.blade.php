@@ -149,11 +149,11 @@
             </div>
         </div>
         <a href="{{url('/printviewachat')}}" class="btn btn-primary">Imprission des Achats</a>
-            <script type="text/javascript">
+            {{-- <script type="text/javascript">
                 $(document).ready(function(){
                     $('.btnprn').printPage();
                 }
                 );
-            </script>
+            </script> --}}
     </div>
 @endsection

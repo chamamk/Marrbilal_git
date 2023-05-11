@@ -15,17 +15,17 @@ class FournisseurController extends Controller
     public function index()
     {
         if (request('search1')) {
-            $fournisseurs = Fournisseur::where('nomcomplet', 'like', '%' . request('search1') . '%')->get();
+            $fournisseurs = Fournisseur::where('id', 'like', '%' . request('search1') . '%')->get();
             } else {
                 $fournisseurs=Fournisseur::all();
             } return
              view('fournisseur.index',compact('fournisseurs'));
     }
-    public function printviewfournisseur()
-    {
-        $fournisseurs = Fournisseur::all();
-            return view ('fournisseur.printFournisseur')->with('fournisseurs',$fournisseurs);
-    }
+    // public function printviewfournisseur()
+    // {
+    //     $fournisseurs = Fournisseur::all();
+    //         return view ('fournisseur.printFournisseur')->with('fournisseurs',$fournisseurs);
+    // }
 
     public function create()
     {
@@ -38,7 +38,7 @@ class FournisseurController extends Controller
         $request->validate([
             "nomcomplet" => "required|string",
             "comptebancaire" => "required|string",
-            "telephone" => "required|integer",
+            "telephone" => "required",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);
@@ -63,7 +63,7 @@ class FournisseurController extends Controller
         $request->validate([
             "nomcomplet" => "required|string",
             "comptebancaire" => "required|string",
-            "telephone" => "required|integer",
+            "telephone" => "required",
             "adresse" => "required|string",
             "ville" => "required|string"
         ]);

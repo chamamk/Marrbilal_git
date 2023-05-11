@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
       <div class="card">
@@ -55,13 +56,17 @@
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                @php
+                use App\Models\Client;
+                $clients = Client::count();
+                @endphp
+                <p class="text-sm mb-0 text-uppercase font-weight-bold">Nombre Des Clients</p>
                 <h5 class="font-weight-bolder">
-                  +3,462
+                  {{$clients}}
                 </h5>
                 <p class="mb-0">
-                  <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                  since last quarter
+                    <br>
+                  {{-- <span class="text-danger text-sm font-weight-bolder"></span> --}}
                 </p>
               </div>
             </div>

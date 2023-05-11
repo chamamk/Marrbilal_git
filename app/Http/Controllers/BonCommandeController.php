@@ -11,17 +11,17 @@ class BonCommandeController extends Controller
     public function index()
     {
         if (request('search3')) {
-            $bonsCommande = BonCommande::where('client_id', '=', 2 . request('search3'))->get();
+            $bonsCommande = BonCommande::where('id', '=', 2 . request('search3'))->get();
             } else {
                 $bonsCommande=BonCommande::all();
             } return
              view('bonCommande.index',compact('bonsCommande'));
     }
-    public function printviewbon()
-    {
-        $bonsCommande = BonCommande::all();
-            return view ('bonCommande.printBon')->with('bonsCommande',$bonsCommande);
-    }
+    // public function printviewbon()
+    // {
+    //     $bonsCommande = BonCommande::all();
+    //         return view ('bonCommande.printBon')->with('bonsCommande',$bonsCommande);
+    // }
     public function caisse(){
         return view('bonCommande.caisse');
     }
@@ -64,10 +64,10 @@ class BonCommandeController extends Controller
                         "article_id"=> $value['article_id'],
                         "client_id"=> $value['client_id'],
                         ]
-                    );  
-                } 
-                 return Response()->json(['status' => 200, 'message' => 'data inserted']); 
-             
+                    );
+                }
+                 return Response()->json(['status' => 200, 'message' => 'data inserted']);
+
     }
 
     /**

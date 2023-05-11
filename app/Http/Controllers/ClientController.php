@@ -16,17 +16,17 @@ class ClientController extends Controller
     public function index()
     {
         if (request('search1')) {
-            $clients = Client::where('nomcomplete', 'like', '%' . request('search1') . '%')->get();
+            $clients = Client::where('id', 'like', '%' . request('search1') . '%')->get();
             } else {
                 $clients=Client::all();
             } return
             view('client.index',compact('clients'));
     }
-    public function printviewclient()
-    {
-        $clients = Client::all();
-            return view ('client.printClient')->with('clients',$clients);
-    }
+    // public function printviewclient()
+    // {
+    //     $clients = Client::all();
+    //         return view ('client.printClient')->with('clients',$clients);
+    // }
     public function getClient()
     {
         $data['clients']=Client::all();

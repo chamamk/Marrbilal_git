@@ -15,17 +15,17 @@ class AchatController extends Controller
     public function index()
     {
         if (request('search2')) {
-            $achats = Achat::where('fournisseur_id', '=', 1 . request('search2'))->get();
+            $achats = Achat::where('id', '=', 1 . request('search2'))->get();
             } else {
                 $achats=Achat::all();
             } return
             view('achat.index',compact('achats'));
     }
-    public function printviewachat()
-    {
-        $achats = Achat::all();
-            return view ('achat.printAchat')->with('achats',$achats);
-    }
+    // public function printviewachat()
+    // {
+    //     $achats = Achat::all();
+    //         return view ('achat.printAchat')->with('achats',$achats);
+    // }
     public function create()
     {
         return view('achat.create');

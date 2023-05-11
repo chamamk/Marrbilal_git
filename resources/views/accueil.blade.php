@@ -1,7 +1,5 @@
 @extends('index')
-@section('title')
-    Acceuil    
-@endsection
+@section('title',"Acceuil")
 @section('main')
 @include('partials.cards')
 <div class="row">

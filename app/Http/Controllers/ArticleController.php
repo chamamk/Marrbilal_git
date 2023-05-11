@@ -18,17 +18,17 @@ class ArticleController extends Controller
     public function index()
     {
         if (request('search1')) {
-            $articles = Article::where('nomcommercial', 'like', '%' . request('search1') . '%')->get();
+            $articles = Article::where('id', 'like', '%' . request('search1') . '%')->get();
             } else {
                 $articles=Article::all();
             } return
             view('article.index',compact('articles'));
     }
-    public function printviewarticle()
-    {
-        $articles = Article::all();
-            return view ('article.printArticle')->with('articles',$articles);
-    }
+    // public function printviewarticle()
+    // {
+    //     $articles = Article::all();
+    //         return view ('article.printArticle')->with('articles',$articles);
+    // }
     public function getArticle()
     {
         $data['articles'] = Article::all();
