@@ -1,6 +1,6 @@
 @extends('index')
 @section('title')
-    La caisse du Bon Commande
+    La caisse
 @endsection
 @section('reactjs')
     @viteReactRefresh

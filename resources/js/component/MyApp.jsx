@@ -1,6 +1,7 @@
 import {React  , useEffect, useState} from 'react';
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 function MyApp() {
     const [client , setClient] = useState([])
     const [clientId , setClientId] = useState()
@@ -161,19 +162,20 @@ function MyApp() {
               .then(Response=>{
                      console.log(Response.data.status)
                  })
-                 axios.post("http://127.0.0.1:8000/api/Caisse" , AllProduct)
-                 .then(Response=>{
-                        console.log(Response.data.status)
-                    })
               setAllProduct([])
             } else if (result.isDenied) {
               Swal.fire('Les modifications ne sont pas enregistrées', '', 'info')
             }
           })
       }
+      let navigate = useNavigate();
+  function handleChange(value) {
+    navigate(`${value}`);
+    value = "";
+  }
     return (
     <>
-    <div className="col-12">
+    <div className="col-12"> 
     <div className="card mb-4 w-95">
         <div className="card-header pb-0 d-flex">
             {/* <h6>La Caisse</h6>  */}
@@ -233,17 +235,27 @@ function MyApp() {
             </div>
             </div>
             <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-4">
                 <div className="form-group">
                 <label  className="form-control-label">Avances</label>
                     <input type="number" className="form-control" onChange={e=>{setAvances(e.target.value)}}/>
                 </div>
             </div>
-            <div className="col-md-6 mt-4">
+            <div className="col-md-4 mt-4">
                 <div className="form-group">
                 <label  className="form-control-label"></label>
                     <button type="button" className="btn btn-success fa fa-plus ms-5 py-2 px-3" onClick={AddArticle}></button>
                 </div>
+            </div>
+            <div className="col-md-4 mt-3">
+            <div class="form-group">
+            <select class="form-select" aria-label="Default select example" onChange={event => handleChange(event.target.value)}>
+                <option selected>select la caisse</option>
+                <option value="/Caisse">la caisse de Bon de commende</option>
+                <option value="/Caisse/bl">la caisse bon de livraison </option>
+                
+            </select>
+            </div>
             </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ if (document.getElementById('app')) {
         <BrowserRouter>
             <Routes>
                 <Route path='/Caisse' element={<MyApp />} />
-                <Route path='/Caisse2' element={<AppTwo />} />
+                <Route path='/Caisse/bl' element={<AppTwo />} />
             </Routes>
         </BrowserRouter>
     , 
