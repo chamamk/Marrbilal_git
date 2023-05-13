@@ -141,9 +141,9 @@ function MyApp() {
           })
     }
     const total = AllProduct.reduce(function (total, produit) {
-        return total += (( produit.largeur * produit.longueur) * produit.prix * produit.qte)
+        return total += (( produit.largeur * produit.longueur) * produit.prix * produit.qte) 
     }, 0)
-
+    
     console.log(AllProduct)
       const InsertData = async (e) => {
         e.preventDefault()
@@ -380,7 +380,7 @@ function MyApp() {
                                 </td>
                             </tr>
                         ))
-                    }
+                    } 
                     </tbody>
                 </table>
                 </div>
@@ -390,20 +390,20 @@ function MyApp() {
     <div className='col-md'>
         <div className='col-md float-end bg-transparent opacity-100 py-4'>
             <span className='text-dark text'>
-                {((total * 1.10) - avances).toFixed(2)} DH
+                {(total * 1.10 - avances).toFixed(2)} DH
             </span>
         </div>
             <div className='col-md border border-white rounded float-end bg-danger py-4'>
                 <span className='text-white text'>Total</span><br/>
             </div>
         </div>
-    </div>
+    </div>   
     <div className='col-md mx-5'>
             <div className='col-md-6'>
                 <button type="submit" className="btn btn-warning px-5 py-4 mx-0 my-3" onClick={InsertData}><span className='text-lg'>Valider</span></button>
             </div>
     </div>
-
+                     
 </>
     );
 }

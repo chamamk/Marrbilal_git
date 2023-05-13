@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('bonCommande',BonCommandeController::class);
     Route::resource('bl',BlController::class);
     Route::get('/Caisse', [BonCommandeController::class , 'caisse'])->name('caisse');
+    Route::get('/Caisse2', [BonCommandeController::class , 'caisse']);
 
 
 

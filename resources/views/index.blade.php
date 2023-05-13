@@ -22,7 +22,12 @@
     @yield('reactjs')
 </head>
 <body>
-    @include('partials.navbar')
+    @if ((url()->full() == "http://127.0.0.1:8000/login" || url()->full() == "http://127.0.0.1:8000/register"  ))
+    <nav class="sidebar close print-hide " style="background:  #E4E9F7"></nav>
+    @else
+        @include('partials.navbar')
+    @endif
+    {{--  --}}
     <section class="home py-5">
         <div class="text">
             @yield('title')

@@ -72,10 +72,15 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="#">
-                    <i class='bx bx-log-out icon' ></i>
-                    <span class="text nav-text">Logout</span>
-                </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-responsive-nav-link :href="route('logout')"
+                                onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                           <i class='bx bx-log-out icon' ></i>
+                        </x-responsive-nav-link>
+                    </form>
+                    <span class="text nav-text">{{ Auth::user()->name }}</span>
             </li>
         </div>
     </div>
